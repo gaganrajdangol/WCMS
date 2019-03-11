@@ -30,7 +30,6 @@ Route::get('wcms/register','Wcmscontroller@register');
 Route::get('wcms/order','Wcmscontroller@order');
 Route::get('wcms/aboutus','Wcmscontroller@aboutus');
 Route::get('wcms/settings','Wcmscontroller@settings');
-Route::get('wcms/inventory','Wcmscontroller@inventory');
 Route::get('/additems',function(){return view('woodcraft/inventory');
 });
 Route::get('/additems','ItemController@index');

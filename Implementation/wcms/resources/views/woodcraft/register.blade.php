@@ -34,27 +34,32 @@
 
     <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(35, 35, 35);"></div>
 
-    <div class="container align-center col-md-6">
-        <div class="row justify-content-md-center col-md-12">
-            <div class="mbr-white col-md-12">
 
+    <div class="container align-left col-md-6">
+        <div class="media-container-row">
+            <img src="{{ URL::to('assets/images/wood-signup.jpg') }}" alt="" style="width: 485px; height: 500px;">
 
-<div class="container col-md-12">
-    <div class="row justify-content-center col-md-12">
-        <div class="col-md-12">
+        </div>
+    </div>
+
+    <div class="container align-right col-md-6">
             <div class="card">
                 
 
-                <div class="container align-center col-md-6">
+                <div class="container align-center" style="border: 2px solid white">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="form-group h2">Register</div>
+                        <div class="form-group h2  mbr-white">Register</div>
 
-                        <div class="form-group row">
-                            <span class="mbri-user display-4" style="float: left;"></span>
+                        
+                            <div class="col-md-6" style="float:left;">
 
-                            <div class="col-md-12" style="float: left;">
+                            <div class="form-group col-md-12">
+                                <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text mbri-user display-4"></span>
+                            </div>
                                 <input id="fullname" type="text" style="font-size:0.8rem;" class="form-control h4 {{ $errors->has('name') ? ' is-invalid' : '' }}" name="fullname" value="{{ old('name') }}" placeholder="Fullname" required autofocus>
 
                                 @if ($errors->has('name'))
@@ -65,10 +70,13 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <span class="mbri-pin display-4"></span>
+                         <div class="form-group col-md-12">
+                                <div class="input-group">
+                                <div class="input-group-prepend">
+                            <span class="input-group-text mbri-pin display-4"></span>
+                        </div>
 
-                            <div class="col-md-12">
+                           
                                 <input id="address" type="text" style="font-size:0.8rem;" class="form-control h4 {{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" placeholder="Address" required autofocus>
 
                                 @if ($errors->has('address'))
@@ -78,11 +86,14 @@
                                 @endif
                             </div>
                         </div>
+                    
 
-                        <div class="form-group row">
-                            <span class="mbri-alert display-4"></span>
-
-                            <div class="col-md-12">
+                       <div class="form-group col-md-12">
+                                <div class="input-group">
+                                <div class="input-group-prepend">
+                            <span class="input-group-text mbri-alert display-4"></span>
+                        </div>
+                            
                                 <input id="contact" type="text" style="font-size:0.8rem;" class="form-control h4 {{ $errors->has('contact') ? ' is-invalid' : '' }}" name="contact" value="{{ old('contact') }}" placeholder="Contact" required autofocus>
 
                                 @if ($errors->has('contact'))
@@ -93,10 +104,12 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <span class="mbri-letter display-4"></span>
+                        <div class="form-group col-md-12">
+                                 <div class="input-group">
+                                <div class="input-group-prepend">
+                            <span class="input-group-text mbri-letter display-4"></span>
+                        </div>
 
-                            <div class="col-md-12">
                                 <input id="email" type="email" style="font-size:0.8rem;" class="form-control h4 {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email" required>
 
                                 @if ($errors->has('email'))
@@ -107,10 +120,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <span class="mbri-user display-4"></span>
+                    </div>
 
-                            <div class="col-md-12">
+                    <div class="col-md-6" style="float: left;">
+
+                        <div class="form-group col-md-12">
+                                <div class="input-group">
+                                <div class="input-group-prepend">
+                            <span class="input-group-text mbri-user display-4"></span>
+                        </div>
                                 <input id="username" type="text" style="font-size:0.8rem;" class="form-control h4 {{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" placeholder="Username" required autofocus>
 
                                 @if ($errors->has('username'))
@@ -121,9 +139,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                           <span class="mbri-key display-4"></span>
-                            <div class="col-md-12">
+                        <div class="form-group col-md-12">
+                                <div class="input-group">
+                                <div class="input-group-prepend">
+                           <span class="input-group-text mbri-key display-4"></span>
+                            </div>
                                 <input id="password" type="password" style="font-size:0.8rem;" class="form-control h4 {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password" required>
 
                                 @if ($errors->has('password'))
@@ -134,13 +154,16 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <span class="mbri-key display-4"></span>
+                        <div class="form-group col-md-12">
+                                <div class="input-group">
+                                <div class="input-group-prepend">
+                            <span class="input-group-text mbri-key display-4"></span>
 
-                            <div class="col-md-12">
+                            </div>
                                 <input id="password-confirm" type="password" style="font-size:0.8rem;" class="form-control h4" name="password_confirmation" placeholder="Confirm Password" required>
                             </div>
                         </div>
+                    </div>
 
                         <div class="form-group row col-md-12">
                             <div class="col-md-12">
@@ -153,12 +176,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-</div>
-        </div>
-    </div>
     
 </section>
 

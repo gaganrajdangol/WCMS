@@ -17,6 +17,17 @@
   <link rel="stylesheet" href=" {{ url('assets/socicon/css/styles.css') }}">
   <link rel="stylesheet" href=" {{ url('assets/theme/css/style.css') }}">
   <link rel="stylesheet" href=" {{ url('assets/mobirise/css/mbr-additional.css') }}" type="text/css">
+
+  <script src=" {{ url('assets/web/assets/jquery/jquery.min.js') }}"></script>
+  <script src=" {{ url('assets/popper/popper.min.js') }}"></script>
+  <script src=" {{ url('assets/tether/tether.min.js') }}"></script>
+  <script src=" {{ url('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+  <script src=" {{ url('assets/deltapi-plugin/highlight.pack.js') }}"></script>
+  <script src=" {{ url('assets/deltapi-plugin/deltapiform.js') }}"></script>
+  <script src=" {{ url('assets/dropdown/js/script.min.js') }}"></script>
+  <script src=" {{ url('assets/touchswipe/jquery.touch-swipe.min.js') }}"></script>
+  <script src=" {{ url('assets/smoothscroll/smooth-scroll.js') }}"></script>
+  <script src=" {{ url('assets/theme/js/script.js') }}"></script>
   
   
   
@@ -93,7 +104,8 @@
             <div style="background-color: rgb(255, 255, 255);">
                 <div style="background-color: rgb(255, 255, 255);"><hr><hr>
 
-                    <form class="form-horizontal" action="{!! url('/inventory) !!}">
+                    <form class="form-horizontal" action="{!! url('/inventory') !!}" method="post">
+                        @csrf
                         <fieldset>
 
                             <!-- Form Name -->
@@ -113,7 +125,11 @@
                                 <label class="col-md-4 control-label" for="item_type">Item Type</label>
                                 <div class="col-md-4">
                                     <select id="item_type" name="item_type" class="form-control">
-                                        <option value="1">Select Item Type</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E">E</option>
                                     </select>
                                 </div>
                             </div>
@@ -121,8 +137,11 @@
                             <!-- Text input-->
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="itemprice">Item Price</label>
-                                <div class="col-md-4">
-                                    <input id="item_price" name="item_price" type="text" placeholder="रू 0.00" class="form-control input-md">
+                                <div class="col-md-4 input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">रू</span>
+                                    </div>
+                                    <input id="price" name="price" type="text" placeholder="0.00" class="form-control input-md">
 
                                 </div>
                             </div>
@@ -131,7 +150,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="item_description">Item Description</label>
                                 <div class="col-md-4">
-    <textarea class="form-control" id="item_description" name="item_description">Add Description...
+    <textarea class="form-control" id="item_description" name="item_description" placeholder="Add Description...">
 </textarea>
                                 </div>
                             </div>
@@ -218,16 +237,8 @@
     </div>
 </section>
 
-  <script src=" {{ url('js/app.js')}}"></script>
 
-    <script>
-      var msg = '{{Session::get('success') }}';
-      var exist = '{{Session::has('success')}}';
-      if(exist)
-      {
-        alert(msg);
-      }
-      </script>
+
 
 <section class="cid-rgiIeIqRn2" id="footer1-13">
 
@@ -309,16 +320,7 @@
 </section>
 
 
-  <script src=" {{ url('assets/web/assets/jquery/jquery.min.js') }}"></script>
-  <script src=" {{ url('assets/popper/popper.min.js') }}"></script>
-  <script src=" {{ url('assets/tether/tether.min.js') }}"></script>
-  <script src=" {{ url('assets/bootstrap/js/bootstrap.min.js') }}"></script>
-  <script src=" {{ url('assets/deltapi-plugin/highlight.pack.js') }}"></script>
-  <script src=" {{ url('assets/deltapi-plugin/deltapiform.js') }}"></script>
-  <script src=" {{ url('assets/dropdown/js/script.min.js') }}"></script>
-  <script src=" {{ url('assets/touchswipe/jquery.touch-swipe.min.js') }}"></script>
-  <script src=" {{ url('assets/smoothscroll/smooth-scroll.js') }}"></script>
-  <script src=" {{ url('assets/theme/js/script.js') }}"></script>
+
   
 </body>
 </html>

@@ -42,7 +42,7 @@
             <div class="navbar-brand">
                 <span class="navbar-logo">
                     <a href="index.html">
-                        <img src="assets/images/shiva2-122x145.png" alt="wcms" title="" style="height: 5.1rem;">
+                        <img src=" {{ URL::to('assets/images/shiva2-122x145.png') }}" alt="wcms" title="" style="height: 5.1rem;">
                     </a>
                 </span>
                 <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-5" href="index.html">
@@ -79,29 +79,29 @@
 
     <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(35, 35, 35);"></div>
 
-    <div class="container align-center">
-        <div class="row justify-content-md-center">
-            <div class="mbr-white col-md-10">
-                
-<!-- logon form -->
+    <div class="container align-left col-md-6">
+    </div>
 
-                <div class="container col-md-6">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
+    <div class="container align-right col-md-3">
             <div class="card">
-                <div class="form-group h2">Login</div>
+                
 
-                <div class="card-body">
+                <div class="container align-center col-md-12" style="border: 2px solid white">
 <!-- form -->
 
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="form-group row col-md-12">
-                            <label for="username" class="col-md-4 col-form-label text-md-right h1"><span class="mbri-user"></span></label>
+                        <div class="form-group h2 mbr-white mt-2">Login</div>
 
-                            <div class="col-md-8">
-                                <input id="username" type="username" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" style="height:5px" required autofocus>
+                        <div class="row" style="float:left;">                        
+
+                            <div class="form-group col-md-12">
+                                <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text mbri-user display-4"></span>
+                                </div>
+                                <input id="username" type="username" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" style="font-size:0.8rem;" placeholder="Username" required autofocus>
 
                                 @if ($errors->has('username'))
                                     <span class="invalid-feedback" role="alert">
@@ -111,11 +111,14 @@
                             </div>
                         </div>
 
-                        <div class="form-group row col-md-12">
-                            <label for="password" class="col-md-4 col-form-label text-md-right h1"><span class="mbri-key"></span></label>
+                        <div class="form-group col-md-12">
+                                <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text mbri-key display-4"></span>
+                                </div>
 
-                            <div class="col-md-8">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                            
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" style="font-size:0.8rem;" placeholder="Password" required>
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
@@ -125,42 +128,33 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
+                        <div class="form-group row col-md-12 align-center">
+                                <div class="form-check col-md-12">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                                    <label class="form-check-label" for="remember">
+                                    <label class="form-check-label mbr-white" for="remember">
                                         {{ __('Remember Me') }}
                                     </label>
                                 </div>
-                            </div>
                         </div>
 
-                        <div class="form-group row">
-                            <div class="offset-md-4">
-                                <button type="submit" class="btn btn-primary col-md-10">
-                                    {{ __('Login') }}
+                        <div class="form-group row col-md-12">
+                                <button type="submit" class="btn btn-primary col-md-12">
+                                    Login
                                 </button>
 
-                                <div class="form-group row">
-                                    <a class="btn btn-link" href="{{ url('wcms/register') }}">
+                                <div class="form-group row justify-content-center col-md-12 mb-0">
+                                    <a class="btn btn-link mbr-white pr-2" href="{{ url('wcms/register') }}">
                                         Create Account
                                     </a>
                                   </div>
-                                
-                            </div>
                         </div>
+
+                    </div>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-                
-            </div>
-        </div>
-    </div>
     
 </section>
 
