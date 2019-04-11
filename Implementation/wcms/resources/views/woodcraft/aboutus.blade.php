@@ -22,7 +22,8 @@
   
 </head>
 <body>
-  <section class="menu cid-rg6hCT4CBx" once="menu" id="menu2-1l">
+  
+   <section class="menu cid-rg6hCT4CBx" once="menu" id="menu2-b">
 
     
 
@@ -38,36 +39,51 @@
         <div class="menu-logo">
             <div class="navbar-brand">
                 <span class="navbar-logo">
-                    <a href="{!! url('wcms/index') !!}">
-                        <img src=" {{ URL::to('assets/images/shiva2-122x145.png') }}" alt="wcms" title="" style="height: 5.1rem;">
+                    <a href="index.html">
+                        <img src="{{ URL::to('assets/images/shiva2-122x145.png') }}" alt="wcms" title="" style="height: 5.1rem;">
                     </a>
                 </span>
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-5" href="index.html">
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-5" href="{!! url('wcms/index2') !!}">
                         WCMS</a></span>
             </div>
         </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse align-right" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
-                <li class="nav-item">
-                    <a class="nav-link link text-black display-5" href="{!! url('wcms') !!}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link link text-black display-5" href="{!! url('wcms/order') !!}">Order</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link link text-black display-5" href="page1.html">Forum</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}">About US</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
-                        <span class="mbri-setting3 mbr-iconfont mbr-iconfont-btn"></span>
-                    </a>
-                </li>
+              <li class="nav-item">
+                <a class="nav-link link text-black display-5" style="color: #55b4d4;" href="{!! url('wcms/index2') !!}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a href="{!! url('/order2') !!}" class="nav-link link text-black display-5" >Order</a>
+              </li>
+              <li class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('/post') !!}">Forum</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}"><span style="color:#82786e;">About Us</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
+                  <span class="mbri-setting3 mbr-iconfont mbr-iconfont-btn"></span>
+                </a>
+              </li>
+
+<li class="nav-item dropdown">
+
+                                <a class="nav-link link dropdown-toggle btn btn-sm btn-info mbr-white col-md-12" style="border-radius: 45px;" data-toggle="dropdown-submenu" href="#"><h5>{{Auth::user()->fullname}}</h5><span class="caret"></span></a>
+                             
+                                <div class="dropdown-menu btn btn-sm btn-info ml-4 col-md-10" style="border-radius: 20px;">
+                                    <a class="dropdown-item mbr-white" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><h5>Logout</h5></a>
+                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </li>
+
+
             </ul>
 
-            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-info display-4" href="javascript:OpenModal('login')">Login</a></div>
+  
+
+
         </div>
     </nav>
 </section>
@@ -267,8 +283,8 @@
         <div class="media-container-row content text-white">
             <div class="col-12 col-md-3">
                 <div class="media-wrap">
-                    <a href="index.html">
-                        <img src="assets/images/shiva-162x193.png" alt="Mobirise" title="">
+                    <a href="{!! url('wcms') !!}">
+                        <img src="{{ URL::to('assets/images/shiva-162x193.png') }}" alt="" title="">
                     </a>
                 </div>
             </div>
@@ -290,7 +306,13 @@
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
                 <h5 class="pb-3">
                     Contents</h5>
-                <p class="mbr-text"><a href="index.html" class="text-warning">Home</a><br><a href="page2.html" class="text-warning">Order</a><br><a href="page1.html" class="text-warning">Forum</a><br><a href="page5.html" class="text-warning">About Us</a><br><a href="page4.html" class="text-warning">Settings</a></p>
+                <p class="mbr-text">
+                    <a href="{!! url('wcms') !!}" class="text-warning">Home</a><br>
+                    <a href="{!! url('wcms/order') !!}" class="text-warning">Order</a><br>
+                    <a href="{!! url('/post') !!}" class="text-warning">Forum</a><br>
+                    <a href="{!! url('wcms/aboutus') !!}" class="text-warning">About Us</a><br>
+                    <a href="{!! url('wcms/settings') !!}" class="text-warning">Settings</a>
+                </p>
             </div>
         </div>
         <div class="footer-lower">

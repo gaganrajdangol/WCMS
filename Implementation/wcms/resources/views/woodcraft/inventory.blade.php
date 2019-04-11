@@ -17,24 +17,18 @@
   <link rel="stylesheet" href=" {{ url('assets/socicon/css/styles.css') }}">
   <link rel="stylesheet" href=" {{ url('assets/theme/css/style.css') }}">
   <link rel="stylesheet" href=" {{ url('assets/mobirise/css/mbr-additional.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ url('font-awesome/css/font-awesome.min.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ url('font-awesome/css/font-awesome.css') }}" type="text/css">
 
-  <script src=" {{ url('assets/web/assets/jquery/jquery.min.js') }}"></script>
-  <script src=" {{ url('assets/popper/popper.min.js') }}"></script>
-  <script src=" {{ url('assets/tether/tether.min.js') }}"></script>
-  <script src=" {{ url('assets/bootstrap/js/bootstrap.min.js') }}"></script>
-  <script src=" {{ url('assets/deltapi-plugin/highlight.pack.js') }}"></script>
-  <script src=" {{ url('assets/deltapi-plugin/deltapiform.js') }}"></script>
-  <script src=" {{ url('assets/dropdown/js/script.min.js') }}"></script>
-  <script src=" {{ url('assets/touchswipe/jquery.touch-swipe.min.js') }}"></script>
-  <script src=" {{ url('assets/smoothscroll/smooth-scroll.js') }}"></script>
-  <script src=" {{ url('assets/theme/js/script.js') }}"></script>
   
   
   
 </head>
 <body>
 
+
   <section class="menu cid-rg6hCT4CBx" once="menu" id="menu2-18">
+
 
     
 
@@ -50,26 +44,29 @@
         <div class="menu-logo">
             <div class="navbar-brand">
                 <span class="navbar-logo">
-                    <a href="index.html">
+                    <a href="{!! url('wcms/index2') !!}">
                         <img src=" {{ URL::to('assets/images/shiva2-122x145.png') }}" alt="wcms" title="" style="height: 5.1rem;">
                     </a>
                 </span>
                 <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-5" href="index.html">
-                        WCMS</a></span>
+                        Woodsite</a></span>
             </div>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
-                <li class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
+                <li class="nav-item"><a class="nav-link link text-black display-5" href="/editprofile">
                     <span class="mbri-setting3 mbr-iconfont mbr-iconfont-btn"></span>
                 </a>
             </li>
         
             <li class="nav-item dropdown">
-            <a class="navbar-buttons mbr-section-btn link dropdown-toggle display-4" style="color: black;text-decoration: none;" data-toggle="dropdown-submenu" href="#">Admin<span class="caret"></span></a>
+            <a class="navbar-buttons mbr-section-btn link dropdown-toggle display-4" style="color: black;text-decoration: none;" data-toggle="dropdown-submenu" href="#">{{Auth::user()->fullname}}<span class="caret"></span></a>
             <div class="dropdown-menu rounded border-dark">
             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">Logout</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
             </div>
         </li>
         </ul>
@@ -78,7 +75,13 @@
 </section>
 
 <section class="mbr-section content4 cid-rg8kFJXlk1" id="content4-1a">
-
+ <div>
+        @if($message = Session::get('success'))
+  <div class="alert alert-info">
+   <p><h6>{{$message}}</h6></p>
+  </div>
+  @endif
+    </div>
     
 
     <div class="container">
@@ -93,19 +96,17 @@
     </div>
 </section>
 
-<section style="margin: 20px; background-color: rgb(255, 255, 255);" class="mbr-section--bg-adapted mbr-section--relative" id="deltapiformeditor-1e" data-rv-view="13">
-
-    <div class="dpform">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-12 col-md-offset-1"><hr><hr></div>
 
 
-            <style>.dpform{text-align:left;}</style>
+<section style="margin: 20px; background-color: rgb(255, 255, 255);" class="mbr-section-bg-adapted mbr-section-relative" id="deltapiformeditor-1e" data-rv-view="13">
+    <!-- Add Form -->
 
-            <div style="background-color: rgb(255, 255, 255);">
-                <div style="background-color: rgb(255, 255, 255);"><hr><hr>
+<div class="col-md-6">
 
-                    <form class="form-horizontal" action="{!! url('/inventory') !!}" method="post">
+                    <form class="form-horizontal" action="{!! url('/inventory') !!}" method="post" enctype="multipart/form-data">
                         @csrf
+                        {{method_field('put')}}
                         <fieldset>
 
                             <!-- Form Name -->
@@ -114,7 +115,7 @@
                             <!-- Text input-->
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="item_name">Item Name</label>
-                                <div class="col-md-4">
+                                <div class="col-md-8">
                                     <input id="item_name" name="item_name" type="text" placeholder="Item Name" class="form-control input-md">
 
                                 </div>
@@ -123,7 +124,7 @@
                             <!-- Select Basic -->
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="item_type">Item Type</label>
-                                <div class="col-md-4">
+                                <div class="col-md-8">
                                     <select id="item_type" name="item_type" class="form-control">
                                         <option value="A">A</option>
                                         <option value="B">B</option>
@@ -137,7 +138,7 @@
                             <!-- Text input-->
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="itemprice">Item Price</label>
-                                <div class="col-md-4 input-group">
+                                <div class="col-md-8 input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">रू</span>
                                     </div>
@@ -149,7 +150,7 @@
                             <!-- Textarea -->
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="item_description">Item Description</label>
-                                <div class="col-md-4">
+                                <div class="col-md-8">
     <textarea class="form-control" id="item_description" name="item_description" placeholder="Add Description...">
 </textarea>
                                 </div>
@@ -157,33 +158,40 @@
 
                             <!-- File Button -->
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="item_image">Image</label>
-                                <div class="col-md-4">
-                                    <input id="item_image" name="item_image" class="input-file" type="file">
-                                </div>
+            <label class="col-md-4 control-label" for="itemprice">Item Image</label>
+            <div class="col-md-8">
+              <input type="file" accept=".png, .jpg, .jpeg"  id="uploadImage" name="item_image" class="input-file{{ $errors->has('item_image') ? ' is-invalid' : '' }}" required>
+              @if ($errors->has('item_image'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('item_image') }}</strong>
+                                    </span>
+                                @endif
                             </div>
+         
+        
+            </div>
+
 
                             <!-- Button -->
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="btnadd"></label>
-                                <div class="col-md-4">
-                                    <button id="btnadd" name="btnadd" class="btn btn-inverse">ADD</button>
+                                <div class="col-md-8">
+                                    <button id="btnadd" name="btnadd" class="btn btn-secondary">ADD</button>
+                                    
                                 </div>
                             </div>
 
                         </fieldset>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
-	
+            </div> 
 
 </section>
+    
 
 
 <section class="services6 cid-rg8rYcwOPL" id="services6-1f">
     <!---->
+    
     
    
     
@@ -203,27 +211,42 @@
             <!--Card-1-->
                 <div class="card col-12 pb-5">
                     <div class="card-wrapper media-container-row media-container-row">
-                        <div class="card-box">
-                            <div class="row">
-                                <div class="col-12 col-md-2">
+                            <div class="col-md-12">
+                                <div class="col-12 col-md-2" style="float: left;">
                                     <!--Image-->
-                                    <div class="mbr-figure">
-                                        <img src="assets/images/noimage-320x198.png" alt="" title="">
+                                    <div class="mbr-figure img-thumbnail">
+                                        <img src="/{{ $items->item_image }}" alt="" title="" class="">
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-10">
-                                    <div class="wrapper">
-                                        <div class="top-line pb-3">
-                                            <h4 class="card-title mbr-fonts-style display-5">{!! str_limit($items->item_name,60) !!}</h4>
-                                            <p class="mbr-text cost mbr-fonts-style m-0 display-5"></p><p>Update&nbsp;&nbsp;&nbsp;&nbsp;Delete</p><p></p>
+                                <div class="col-12 col-md-6" style="float: left;">
+                                    <div class="wrapper col-md-12">
+                                        <div class="top-line col-md-12">
+                                            <h4 class="card-title mbr-fonts-style display-5">{!! str_limit($items->item_name,60) !!}</h4>                         
                                         </div>
                                         <div class="bottom-line">
-                                            <p class="mbr-text mbr-fonts-style display-7">{!! str_limit($items->item_type,60) !!}</p>
+                                            <p class="mbr-text mbr-fonts-style display-5">{!! str_limit($items->item_type,60) !!}</p>
+                                        </div>
+                                        <div class="bottom-line">
+                                            <p class="mbr-text mbr-fonts-style display-7">{!! str_limit($items->item_description,60) !!}</p>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-4"  style="float: left;">
+                                                <form method="post" action="">
+                                                    @csrf
+                                                    <button type="button" class="btn btn-primary-outline col-md-6 mbr-white" style="border-radius: 45px;"><span class="mbri-edit2 h4" style="color: blue;"></span></button>
+
+                                                                                                    
+                                                </form>
+
+                                                <form method="post" action="{{url('/additems',$items->itemid)}}">
+                                                    @csrf
+                                                    {{method_field('delete')}}
+                                                    <button type="submit" class="btn btn-secondary-outline col-md-6 mbr-white" style="border-radius: 45px;"><span class="mbri-shopping-basket h4" style="color: #fa5c37;"></span></button>
+                                                </form>
+                                        </div>
                             </div>
-                        </div>
+                        
                     </div>
                 </div>
 
@@ -319,7 +342,16 @@
     </div>
 </section>
 
-
+  <script src=" {{ url('assets/web/assets/jquery/jquery.min.js') }}"></script>
+  <script src=" {{ url('assets/popper/popper.min.js') }}"></script>
+  <script src=" {{ url('assets/tether/tether.min.js') }}"></script>
+  <script src=" {{ url('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+  <script src=" {{ url('assets/deltapi-plugin/highlight.pack.js') }}"></script>
+  <script src=" {{ url('assets/deltapi-plugin/deltapiform.js') }}"></script>
+  <script src=" {{ url('assets/dropdown/js/script.min.js') }}"></script>
+  <script src=" {{ url('assets/touchswipe/jquery.touch-swipe.min.js') }}"></script>
+  <script src=" {{ url('assets/smoothscroll/smooth-scroll.js') }}"></script>
+  <script src=" {{ url('assets/theme/js/script.js') }}"></script>
 
   
 </body>

@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href=" {{ URL::to('assets/images/shiva2-122x145.png') }}" type="image/x-icon">
-  <meta name="description" content="Site Builder Description">
   <title>Settings</title>
   <link rel="stylesheet" href=" {{ url('assets/web/assets/mobirise-icons/mobirise-icons.css') }}">
   <link rel="stylesheet" href=" {{ url('assets/tether/tether.min.css') }}">
@@ -23,7 +22,13 @@
   
 </head>
 <body>
-  <section class="menu cid-rg6hCT4CBx" once="menu" id="menu2-1h">
+
+
+
+
+
+<section class="menu cid-rg6hCT4CBx" once="menu" id="menu2-18">
+
 
     
 
@@ -49,25 +54,18 @@
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
-              <li class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('wcms') !!}">Home</a>
-              </li><li class="nav-item">
-                <a class="nav-link link text-black display-5" href="{!! url('wcms/order') !!}">Order</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link link text-black display-5" href="{!! url('wcms/forum') !!}">Forum</a>
-              </li><li class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}l">About US</a>
-              </li><li class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
-                <span class="mbri-setting3 mbr-iconfont mbr-iconfont-btn"></span>
-              </a>
+                <li class="nav-item">
+                  <a class="nav-link link text-black display-4" href="javascript:history.back()" style="font: calibri;">
+                    <b><span class="mbri-left"><b> Back</b></span></b>
+                </a>
             </li>
-          </ul>
-
-            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-info display-4" href="javascript:OpenModal('login')">Login</a></div>
+        
+            </ul>
         </div>
     </nav>
 </section>
 
-<section class="engine"><a href="https://mobirise.info/f">easy site builder</a></section><section class="mbr-section content4 cid-rg8zY9aF7t" id="content4-1j">
+<section class="mbr-section content4 cid-rg8zY9aF7t" id="content4-1j">
 
     
 
@@ -82,6 +80,15 @@
         </div>
     </div>
 </section>
+ <div>
+        @if($message = Session::get('success'))
+  <div class="alert alert-info">
+   <p><h6>{{$message}}</h6></p>
+  </div>
+  @endif
+    </div>
+
+
 
 <section style="margin: 20px; background-color: rgb(255, 255, 255);" class="mbr-section--bg-adapted mbr-section--relative" id="deltapiformeditor-1k" data-rv-view="22">
 
@@ -94,7 +101,14 @@
 <style>.dpform{text-align:left;}</style>
 
 <div style="background-color: rgb(255, 255, 255);">
-<div style="background-color: rgb(255, 255, 255);"><form class="form-horizontal">
+<div style="background-color: rgb(255, 255, 255);">
+
+
+  <form method="post" class="form-horizontal" action="{!!url('/updateprofile', Auth::user()->id)!!}" enctype="multipart/form-data">
+
+          @csrf
+          {!!method_field('put')!!}
+
 <fieldset>
 
 <!-- Form Name -->
@@ -104,7 +118,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="fullname">Full Name</label>  
   <div class="col-md-4">
-  <input id="fullname" name="fullname" type="text" placeholder="Full Name" class="form-control input-md">
+  <input id="fullname" name="fullname" type="text" placeholder="Full Name" class="form-control input-md" value="{!!(Auth::user()->fullname)!!}">
     
   </div>
 </div>
@@ -113,7 +127,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="address">Address</label>  
   <div class="col-md-4">
-  <input id="address" name="address" type="text" placeholder="Address" class="form-control input-md">
+  <input id="address" name="address" type="text" placeholder="Address" class="form-control input-md" value="{!!(Auth::user()->address)!!}">
     
   </div>
 </div>
@@ -122,7 +136,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="contact">Contact</label>  
   <div class="col-md-4">
-  <input id="contact" name="contact" type="text" placeholder="+977" class="form-control input-md">
+  <input id="contact" name="contact" type="text" placeholder="+977" class="form-control input-md" value="{!!(Auth::user()->contact)!!}">
     
   </div>
 </div>
@@ -131,16 +145,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="emaile">Email</label>  
   <div class="col-md-4">
-  <input id="emaile" name="emaile" type="text" placeholder="Email" class="form-control input-md">
-    
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="dob">DOB</label>  
-  <div class="col-md-4">
-  <input id="dob" name="dob" type="text" placeholder="Date of Birth" class="form-control input-md">
+  <input id="emaile" name="emaile" type="text" placeholder="Email" class="form-control input-md" value="{!!(Auth::user()->email)!!}">
     
   </div>
 </div>
@@ -149,7 +154,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="username">Username</label>  
   <div class="col-md-4">
-  <input id="username" name="username" type="text" placeholder="Username" class="form-control input-md">
+  <input id="username" name="username" type="text" placeholder="Username" class="form-control input-md" value="{!!(Auth::user()->username)!!}">
     
   </div>
 </div>
@@ -158,7 +163,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="btnupdate"></label>
   <div class="col-md-4">
-    <button id="btnupdate" name="btnupdate" class="btn btn-primary">Update</button>
+    <button id="btnupdate" type="submit" name="btnupdate" class="btn btn-primary" value="update">Update</button>
   </div>
 </div>
 
@@ -170,7 +175,17 @@
             </div>
         </div>
     </div>
-	
+
+
+
+<script>
+      var msg = '{{Session::get('success')}}';
+      var exist = '{{Session::has('success')}}';
+      if(exist)
+      {
+        alert(msg);
+      }
+</script>	
 
 </section>
 
@@ -185,7 +200,7 @@
             <div class="col-12 col-md-3">
                 <div class="media-wrap">
                     <a href="index.html">
-                        <img src="assets/images/shiva-162x193.png" alt="Mobirise" title="">
+                        <img src="{{ URL::to('assets/images/shiva-162x193.png') }}" alt="" title="">
                     </a>
                 </div>
             </div>

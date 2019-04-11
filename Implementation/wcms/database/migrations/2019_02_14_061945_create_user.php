@@ -18,13 +18,13 @@ class CreateUser extends Migration
             $table->string('fullname',30);
             $table->string('address',50);
             $table->string('contact',10);
-            $table->string('email',25)->unique();
-            $table->string('username',15);
-            $table->string('password',25);
+            $table->string('email',25);
+            $table->string('username',15)->unique();
+            $table->string('password');
 
             $table->unsignedInteger('usertypeid');
             $table->foreign('usertypeid')->references('usertypeid')->on('usertype');            
-            // $table->rememberToken();
+            $table->rememberToken();
             
             $table->timestamps();
         });

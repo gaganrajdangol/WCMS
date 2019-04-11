@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="{{ url('assets/images/shiva2-122x145.png" type="image/x-icon') }}">
+  <link rel="shortcut icon" href="{{ url('assets/images/shiva2-122x145.png') }}" type="image/x-icon">
   <title>Home</title>
   <link rel="stylesheet" href="{{ url('assets/web/assets/mobirise-icons/mobirise-icons.css') }}" type="text/css">
   <link rel="stylesheet" href="{{ url('assets/tether/tether.min.css') }}" type="text/css">
@@ -47,66 +47,46 @@
                         <img src="{{ URL::to('assets/images/shiva2-122x145.png') }}" alt="wcms" title="" style="height: 5.1rem;">
                     </a>
                 </span>
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-5" href="index.html">
-                        WCMS</a></span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-5" href="{!! url('wcms/index2') !!}">
+                        Woodsite</a></span>
             </div>
         </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse align-right" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
               <li class="nav-item">
-                <a class="nav-link link text-black display-5" href="{!! url('wcms') !!}">Home</a>
+                <a class="nav-link link text-black display-5" style="color: #55b4d4;" href="{!! url('wcms/index2') !!}"><span style="color:#82786e;">Home</span></a>
               </li>
               <li class="nav-item">
-                <a href="{!! url('wcms/order') !!}" class="nav-link link text-black display-5" >Order</a>
+                <a href="{!! url('/order2') !!}" class="nav-link link text-black display-5" >Order</a>
               </li>
-              <li class="nav-item"><a class="nav-link link text-black display-5" href="page1.html">Forum</a>
+              <li class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('/post') !!}">Forum</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}">About US</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
-                  <span class="mbri-setting3 mbr-iconfont mbr-iconfont-btn"></span></a>
+                  <span class="mbri-setting3 mbr-iconfont mbr-iconfont-btn"></span>
+                </a>
               </li>
 
 <li class="nav-item dropdown">
 
-                                <a class="nav-link link dropdown-toggle btn btn-md btn-secondary display-4" data-toggle="dropdown-submenu" href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
+                                <a class="nav-link link dropdown-toggle btn btn-sm btn-info mbr-white col-md-12" style="border-radius: 45px;" data-toggle="dropdown-submenu" href="#"><h5>{{Auth::user()->fullname}}</h5><span class="caret"></span></a>
                              
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">Logout</a>
-                                </li>
-
-              <!-- <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <div class="dropdown-menu btn btn-sm btn-info ml-4 col-md-10" style="border-radius: 20px;">
+                                    <a class="dropdown-item mbr-white" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><h5>Logout</h5></a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                </div>
-                            </li> -->
+                                  </div>
+                                </li>
+
 
             </ul>
 
-            <!-- @if(isset(Auth::user()->email))
-
-            <div class="navbar-buttons mbr-section-btn">{{ Auth::user()->email }}</div>
-            
-            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-info display-4" href="{{ url('/main/logout') }}">{{ Auth::user()->name }} <span class="caret"></span></a></div>
-
-            @else
-    <script>window.location = "woodcraft/index";</script>
-   @endif -->
+  
 
 
         </div>
@@ -130,7 +110,7 @@
                 <p class="mbr-text pb-3 mbr-fonts-style display-5">
                     Decorate Your House, Office and Workspace with our products.<br>Hundred of items to choose from.</p>
                 <div class="mbr-section-btn"><a class="btn btn-md btn-secondary display-4" href="page2.html">Buy Products</a>
-                    <a class="btn btn-md btn-white-outline display-4" href="javascript:OpenModal('signup')">Join Us</a></div>
+                    <a class="btn btn-md btn-white-outline display-4" href="{{ url('wcms/register') }}">Join Us</a></div>
             </div>
         </div>
     </div>
@@ -214,12 +194,13 @@
 
     <div class="container">
         <div class="media-container-row content text-white">
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 mbr-black align-center">
                 <div class="media-wrap">
-                    <a href="index.html">
+                    <a href="{!! url('wcms/index2') !!}">
                         <img src="{{ url('assets/images/shiva-162x193.png') }}" alt="Mobirise" title="">
                     </a>
                 </div>
+                <h2>WOODSITE</h2>
             </div>
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
                 <h5 class="pb-3">
@@ -299,3 +280,6 @@
   
 </body>
 </html>
+
+
+

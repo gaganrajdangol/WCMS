@@ -22,7 +22,8 @@
   
 </head>
 <body>
-  <section class="menu cid-rg7OiP2tVz" once="menu" id="menu2-l">
+   
+    <section class="menu cid-rg6hCT4CBx" once="menu" id="menu2-b">
 
     
 
@@ -39,40 +40,55 @@
             <div class="navbar-brand">
                 <span class="navbar-logo">
                     <a href="index.html">
-                        <img src=" {{ URL::to('assets/images/shiva2-122x145.png') }}" alt="wcms" title="" style="height: 5.1rem;">
+                        <img src="{{ URL::to('assets/images/shiva2-122x145.png') }}" alt="wcms" title="" style="height: 5.1rem;">
                     </a>
                 </span>
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-5" href="index.html">
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-5" href="{!! url('wcms/index2') !!}">
                         WCMS</a></span>
             </div>
         </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse align-right" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
-                <li class="nav-item">
-                    <a class="nav-link link text-black display-5" href="{!! url('wcms') !!}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link link text-black display-5" href="{!! url('wcms/order') !!}">Order</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link link text-black display-5" href="page1.html">Forum</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}">About US</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
-                        <span class="mbri-setting3 mbr-iconfont mbr-iconfont-btn"></span>
-                    </a>
-                </li>
+              <li class="nav-item">
+                <a class="nav-link link text-black display-5" style="color: #55b4d4;" href="{!! url('wcms/index2') !!}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a href="{!! url('/order2') !!}" class="nav-link link text-black display-5" >Order</a>
+              </li>
+              <li class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('/post') !!}">Forum</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}">About US</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
+                  <span class="mbri-setting3 mbr-iconfont mbr-iconfont-btn"></span>
+                </a>
+              </li>
+
+<li class="nav-item dropdown">
+
+                                <a class="nav-link link dropdown-toggle btn btn-sm btn-info mbr-white col-md-12" style="border-radius: 45px;" data-toggle="dropdown-submenu" href="#"><h5>{{Auth::user()->fullname}}</h5><span class="caret"></span></a>
+                             
+                                <div class="dropdown-menu btn btn-sm btn-info ml-4 col-md-10" style="border-radius: 20px;">
+                                    <a class="dropdown-item mbr-white" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><h5>Logout</h5></a>
+                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </li>
+
+
             </ul>
 
-            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-info display-4" href="javascript:OpenModal('login')">Login</a></div>
+  
+
+
         </div>
     </nav>
 </section>
 
-<section class="engine"><a href="https://mobirise.info/b">how to create a site for free</a></section><section class="mbr-section content4 cid-rg9wZxVF8P" id="content4-10">
+<section class="mbr-section content4 cid-rg9wZxVF8P" id="content4-10">
 
     
 
@@ -88,7 +104,7 @@
     </div>
 </section>
 
-<section class="services4 cid-rg9wLZ8HqF" xmlns="http://www.w3.org/1999/html" id="services4-z">
+<section class="services4 cid-rg9wLZ8HqF" xmlns="" id="services4-z">
     <!---->
     
     <!---->
@@ -97,44 +113,34 @@
     <!--Container-->
     <div class="container">
         <div class="row">
-            <!--Card-1-->
-            <div class="card p-3 col-12">
                 <div class="card-wrapper media-container-row media-container-row">
-                    <div class="card-box">
-                        <div class="row">
-                            <div class="col-12 col-md-12 col-lg-4">
+                   
+                            <div class="col-12 col-md-6">
                                 <div class="wrapper">
                                     <!--Image-->
                                     <div class="mbr-figure" style="width: 100%;">
-                                        <img src="assets/images/noimage-525x325.png" alt="Mobirise" title="">
+                                        <img src="{{ URL::to('assets/images/noimage-525x325.png') }}" alt="Mobirise" title="">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-7 col-lg-4">
                                 <div class="wrapper col-left">
                                     <!--Title-->
-                                    <h4 class="card-title mbr-fonts-style display-5">
-                                        Item Main</h4>
+                                    <h4 class="card-title mbr-fonts-style display-5">Item Main</h4>
                                     <!--Subtitle-->
                                     <p class="mbr-text mbr-fonts-style pt-3 display-7">
                                         Item Type</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-5 col-lg-4">
-                                <div class="wrapper border_wrapper">
+                                
                                     <!--Cost-->
-                                    <p class="mbr-text mbr-fonts-style col-right mbr-black align-center display-2">
+                                    <p class="mbr-text mbr-fonts-style mbr-black display-2">
                                         रू 0.00
                                     </p>
                                     <!--Btn-->
-                                    <div class="mbr-section-btn col-right align-center"><a href="page6.html" class="btn btn-warning-outline m-0 display-4">
+                                    <div class="mbr-section-btn col-md-12"><a href="page6.html" class="btn btn-warning-outline m-0 display-4">
                                             Order</a></div>
-                                </div>
+                                            </div>
+                                
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!--Card-2-->
             
             <!--Card-3-->
@@ -162,7 +168,7 @@
             <div class="card col-12 col-md-6 col-lg-3">
                 <div class="card-wrapper">
                     <div class="card-img">
-                        <img src="assets/images/noimage-510x316.png" alt="image" title="">
+                        <img src="{{ url::to('assets/images/noimage-510x316.png') }}" alt="image" title="">
                     </div>
                     <div class="card-box pb-md-5">
                         <h4 class="card-title mbr-fonts-style display-5">Item 1</h4>
@@ -177,7 +183,7 @@
             <div class="card col-12 col-md-6 col-lg-3">
                 <div class="card-wrapper">
                     <div class="card-img">
-                        <img src="assets/images/noimage-510x316.png" alt="image" title="">
+                        <img src="{{ url::to('assets/images/noimage-510x316.png') }}" alt="image" title="">
                     </div>
                     <div class="card-box pb-md-5">
                         <h4 class="card-title mbr-fonts-style display-5">Item 2</h4>
@@ -192,7 +198,7 @@
             <div class="card col-12 col-md-6 col-lg-3">
                 <div class="card-wrapper">
                     <div class="card-img">
-                        <img src="assets/images/noimage-510x316.png" alt="Mobirise" title="">
+                        <img src="{{ url::to('assets/images/noimage-510x316.png') }}" alt="Mobirise" title="">
                     </div>
                     <div class="card-box">
                         <h4 class="card-title mbr-fonts-style display-5">Item 3</h4>
@@ -207,7 +213,7 @@
             <div class="card col-12 col-md-6 col-lg-3 last-child">
                 <div class="card-wrapper">
                     <div class="card-img">
-                        <img src="assets/images/noimage-510x316.png" alt="Mobirise" title="">
+                        <img src="{{ url::to('assets/images/noimage-510x316.png') }}" alt="Mobirise" title="">
                     </div>
                     <div class="card-box">
                         <h4 class="card-title mbr-fonts-style display-5">Item 4</h4>
@@ -240,7 +246,7 @@
             <div class="card col-12 col-md-6 col-lg-3">
                 <div class="card-wrapper">
                     <div class="card-img">
-                        <img src="assets/images/noimage-510x316.png" alt="Mobirise" title="">
+                        <img src="{{ url::to('assets/images/noimage-510x316.png') }}" alt="Mobirise" title="">
                     </div>
                     <div class="card-box pb-md-5">
                         <h4 class="card-title mbr-fonts-style display-5">Item 5</h4>
@@ -255,7 +261,7 @@
             <div class="card col-12 col-md-6 col-lg-3">
                 <div class="card-wrapper">
                     <div class="card-img">
-                        <img src="assets/images/noimage-510x316.png" alt="Mobirise" title="">
+                        <img src="{{ url::to('assets/images/noimage-510x316.png') }}" alt="Mobirise" title="">
                     </div>
                     <div class="card-box pb-md-5">
                         <h4 class="card-title mbr-fonts-style display-5">Item 6</h4>
@@ -270,7 +276,7 @@
             <div class="card col-12 col-md-6 col-lg-3">
                 <div class="card-wrapper">
                     <div class="card-img">
-                        <img src="assets/images/noimage-510x316.png" alt="Mobirise" title="">
+                        <img src="{{ url::to('assets/images/noimage-510x316.png') }}" alt="Mobirise" title="">
                     </div>
                     <div class="card-box">
                         <h4 class="card-title mbr-fonts-style display-5">Item 7</h4>
@@ -285,7 +291,7 @@
             <div class="card col-12 col-md-6 col-lg-3 last-child">
                 <div class="card-wrapper">
                     <div class="card-img">
-                        <img src="assets/images/noimage-510x316.png" alt="Mobirise" title="">
+                        <img src="{{ url::to('assets/images/noimage-510x316.png') }}" alt="Mobirise" title="">
                     </div>
                     <div class="card-box">
                         <h4 class="card-title mbr-fonts-style display-5">Item 8</h4>
@@ -311,7 +317,7 @@
             <div class="col-12 col-md-3">
                 <div class="media-wrap">
                     <a href="index.html">
-                        <img src="assets/images/shiva-162x193.png" alt="Mobirise" title="">
+                        <img src="{{ url::to('assets/images/shiva-162x193.png') }}" alt="Mobirise" title="">
                     </a>
                 </div>
             </div>

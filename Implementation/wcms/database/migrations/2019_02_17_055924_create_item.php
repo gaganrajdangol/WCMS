@@ -18,7 +18,8 @@ class CreateItem extends Migration
             $table->string('item_name',30);
             $table->string('item_type',30);
             $table->float('price');
-            $table->string('item_description',200);            
+            $table->string('item_description',200);
+            $table->string('item_image');
             $table->timestamps();
         });
     }

@@ -15,6 +15,9 @@
   <link rel="stylesheet" href="{{ url('assets/dropdown/css/style.css') }}" type="text/css">
   <link rel="stylesheet" href="{{ url('assets/theme/css/style.css') }}" type="text/css">
   <link rel="stylesheet" href="{{ url('assets/mobirise/css/mbr-additional.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ url('font-awesome/css/font-awesome.min.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ url('font-awesome/css/font-awesome.css') }}" type="text/css">
+
   
   
   
@@ -22,9 +25,53 @@
 
 <body>
 
- @extends('woodcraft.nav')
+ <section class="menu cid-rg6hCT4CBx" once="menu" id="menu2-b">
 
-@section('content')
+    
+
+    <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        <div class="menu-logo">
+            <div class="navbar-brand">
+                <span class="navbar-logo">
+                    <a href="{!! url('wcms') !!}">
+                        <img src=" {{ URL::to('assets/images/shiva2-122x145.png') }}" alt="wcms" title="" style="height: 5.1rem;">
+                    </a>
+                </span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-5" href="index.html">
+                        WCMS</a></span>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+              <li class="nav-item">
+                <a class="nav-link link text-black display-5" href="{!! url('wcms') !!}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a href="{!! url('wcms/order') !!}" class="nav-link link text-black display-5" >Order</a>
+              </li>
+              <li class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('wcms/froum') !!}">Forum</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}">About US</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
+                  <span class="mbri-setting3 mbr-iconfont mbr-iconfont-btn"></span></a>
+              </li>
+            </ul>
+
+            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-info display-4" href="{!! url('wcms/login') !!}">Login</a></div>
+        </div>
+    </nav>
+</section>
 
 
 
@@ -46,7 +93,7 @@
             <div class="card">
                 
 
-                <div class="container align-center" style="border: 2px solid white">
+                <div class="container align-center" style="border: 1px solid white">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
@@ -58,7 +105,7 @@
                             <div class="form-group col-md-12">
                                 <div class="input-group">
                                 <div class="input-group-prepend">
-                                <span class="input-group-text mbri-user display-4"></span>
+                                <i class="input-group-text fas fa-user-tie"></i>
                             </div>
                                 <input id="fullname" type="text" style="font-size:0.8rem;" class="form-control h4 {{ $errors->has('name') ? ' is-invalid' : '' }}" name="fullname" value="{{ old('name') }}" placeholder="Fullname" required autofocus>
 
@@ -73,7 +120,7 @@
                          <div class="form-group col-md-12">
                                 <div class="input-group">
                                 <div class="input-group-prepend">
-                            <span class="input-group-text mbri-pin display-4"></span>
+                            <i class="input-group-text fa fa-map-marker-alt"></i>
                         </div>
 
                            
@@ -91,7 +138,7 @@
                        <div class="form-group col-md-12">
                                 <div class="input-group">
                                 <div class="input-group-prepend">
-                            <span class="input-group-text mbri-alert display-4"></span>
+                            <i class="input-group-text fa fa-phone"></i>
                         </div>
                             
                                 <input id="contact" type="text" style="font-size:0.8rem;" class="form-control h4 {{ $errors->has('contact') ? ' is-invalid' : '' }}" name="contact" value="{{ old('contact') }}" placeholder="Contact" required autofocus>
@@ -107,7 +154,7 @@
                         <div class="form-group col-md-12">
                                  <div class="input-group">
                                 <div class="input-group-prepend">
-                            <span class="input-group-text mbri-letter display-4"></span>
+                            <i class="input-group-text fa fa-envelope"></i>
                         </div>
 
                                 <input id="email" type="email" style="font-size:0.8rem;" class="form-control h4 {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email" required>
@@ -127,7 +174,7 @@
                         <div class="form-group col-md-12">
                                 <div class="input-group">
                                 <div class="input-group-prepend">
-                            <span class="input-group-text mbri-user display-4"></span>
+                            <span class="input-group-text fa fa-user"></span>
                         </div>
                                 <input id="username" type="text" style="font-size:0.8rem;" class="form-control h4 {{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" placeholder="Username" required autofocus>
 
@@ -142,7 +189,7 @@
                         <div class="form-group col-md-12">
                                 <div class="input-group">
                                 <div class="input-group-prepend">
-                           <span class="input-group-text mbri-key display-4"></span>
+                           <span class="input-group-text fa fa-key"></span>
                             </div>
                                 <input id="password" type="password" style="font-size:0.8rem;" class="form-control h4 {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password" required>
 
@@ -157,7 +204,7 @@
                         <div class="form-group col-md-12">
                                 <div class="input-group">
                                 <div class="input-group-prepend">
-                            <span class="input-group-text mbri-key display-4"></span>
+                            <span class="input-group-text fa fa-key"></span>
 
                             </div>
                                 <input id="password-confirm" type="password" style="font-size:0.8rem;" class="form-control h4" name="password_confirmation" placeholder="Confirm Password" required>
@@ -274,7 +321,6 @@
 
 
 
-@endsection
 
 </body>
 </html>

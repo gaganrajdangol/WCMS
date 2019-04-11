@@ -20,6 +20,21 @@ class Wcmscontroller extends Controller
      return view('woodcraft.index2');
     }
 
+    function forum()
+    {
+     return view('woodcraft.forum');
+    }
+
+    function order2()
+    {
+     return view('woodcraft.order2');
+    }
+
+    function orderprocess()
+    {
+     return view('woodcraft.orderprocess');
+    }
+
     // function checklogin(Request $request)
     // {
     //  $this->validate($request, [
@@ -81,11 +96,7 @@ class Wcmscontroller extends Controller
     	return view('woodcraft.aboutus');
     }
 
-    public function settings()
-    {
-    	
-    	return view('woodcraft.settings');
-    }
+    
 
     public function inventory()
     {
@@ -111,11 +122,30 @@ class Wcmscontroller extends Controller
         return view('woodcraft.register');
     }
 
+    public function settings()
+    {
+        
+        return view('woodcraft.settings');
+    }
+
     public function admin()
     {
         
         return view('woodcraft.admin');
     }
+    public function aboutus2()
+    {
+        return view('woodcraft.aboutus2');
+    }
+    public function receipt()
+    {
+        return view('woodcraft.receipt');
+    }
+    public function orderlist()
+    {
+        return view('woodcraft.orderlist');
+    }
+
 
     
 }

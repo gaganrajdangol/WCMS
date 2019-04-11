@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="{{ url('assets/images/shiva2-122x145.png" type="image/x-icon') }}">
+  <link rel="shortcut icon" href="{{ URL::to('assets/images/shiva2-122x145.png" type="image/x-icon') }}">
   <title>Home</title>
   <link rel="stylesheet" href="{{ url('assets/web/assets/mobirise-icons/mobirise-icons.css') }}" type="text/css">
   <link rel="stylesheet" href="{{ url('assets/tether/tether.min.css') }}" type="text/css">
@@ -41,7 +41,7 @@
         <div class="menu-logo">
             <div class="navbar-brand">
                 <span class="navbar-logo">
-                    <a href="index.html">
+                    <a href="{!! url('wcms') !!}">
                         <img src=" {{ URL::to('assets/images/shiva2-122x145.png') }}" alt="wcms" title="" style="height: 5.1rem;">
                     </a>
                 </span>
@@ -57,7 +57,7 @@
               <li class="nav-item">
                 <a href="{!! url('wcms/order') !!}" class="nav-link link text-black display-5" >Order</a>
               </li>
-              <li class="nav-item"><a class="nav-link link text-black display-5" href="page1.html">Forum</a>
+              <li class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('wcms/froum') !!}">Forum</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}">About US</a>
@@ -86,7 +86,7 @@
             <div class="card">
                 
 
-                <div class="container align-center col-md-12" style="border: 2px solid white">
+                <div class="container align-center col-md-12" style="border: 1px solid white">
 <!-- form -->
 
                     <form method="POST" action="{{ route('login') }}">
@@ -130,7 +130,7 @@
 
                         <div class="form-group row col-md-12 align-center">
                                 <div class="form-check col-md-12">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <input class="form-check-input {{ old('remember') ? 'checked' : '' }}" type="checkbox" name="remember" id="remember">
 
                                     <label class="form-check-label mbr-white" for="remember">
                                         {{ __('Remember Me') }}
@@ -169,7 +169,7 @@
         <div class="media-container-row content text-white">
             <div class="col-12 col-md-3">
                 <div class="media-wrap">
-                    <a href="index.html">
+                    <a href="{!! url('wcms') !!}">
                         <img src="{{ URL::to('assets/images/shiva-162x193.png') }}" alt="Mobirise" title="">
                     </a>
                 </div>
@@ -192,7 +192,13 @@
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
                 <h5 class="pb-3">
                     Contents</h5>
-                <p class="mbr-text"><a href="index.html" class="text-warning">Home</a><br><a href="page2.html" class="text-warning">Order</a><br><a href="page1.html" class="text-warning">Forum</a><br><a href="page5.html" class="text-warning">About Us</a><br><a href="page4.html" class="text-warning">Settings</a></p>
+                <p class="mbr-text">
+                    <a href="{!! url('wcms') !!}" class="text-warning">Home</a><br>
+                    <a href="{!! url('wcms/order') !!}" class="text-warning">Order</a><br>
+                    <a href="{!! url('/post') !!}" class="text-warning">Forum</a><br>
+                    <a href="{!! url('wcms/aboutus') !!}" class="text-warning">About Us</a><br>
+                    <a href="page4.html" class="text-warning">Settings</a>
+                </p>
             </div>
         </div>
         <div class="footer-lower">

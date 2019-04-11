@@ -27,9 +27,9 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        return view('woodcraft.inventory');
     }
 
     /**
@@ -41,13 +41,29 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         $item = new Item;
+        $pictureInfo = $request->file('item_image');
+
+        $picName = $pictureInfo->getClientOriginalName();
+
+        $folder = "itemImages/";
+
+        $pictureInfo->move($folder,$picName);
+
+        $picUrl = $folder.$picName;
+        if(Item::where('item_image', '=', $picUrl)->exists())
+        {
+            return redirect('/additems');
+        }
+
         $item ->item_name=$request->item_name;
         $item ->item_type=$request->item_type;
         $item ->price=$request->price;
-        $item ->item_description=$request->item_description;
+        $item ->item_description=$request->item_description;        
+        
+        $item->item_image=$picUrl;
 
         $item->save();
-        return redirect()->to('/additems')->with('success','Item is added,successfully!');
+        return redirect()->to('/additems')->with('success','New Item Added.');
     }
         
 
@@ -93,6 +109,8 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $items = Item::find($id);
+        $items->delete();
+        return redirect()->to('/additems')->with('success', 'Item Deleted.');
     }
 }
