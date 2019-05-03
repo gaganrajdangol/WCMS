@@ -58,7 +58,7 @@ Route::get('/editprofile','Settings@index');
 
 Route::put('/updateprofile/{id}','Settings@update');
 
-Route::post('/orderprocess/{id}','OrderController@create')->middleware('auth');
+Route::post('/order/{id}','OrderController@create')->middleware('auth');
 Route::get('/orderprocess/{id}','OrderController@show2');
 
 // Route::get('resource_create','TestController@create');
@@ -86,3 +86,5 @@ Route::get('/orderprocess/{id}','OrderController@show2');
 // Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/searchproducts', 'ItemController@search');

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="{{ url('assets/images/shiva2-122x145.png" type="image/x-icon') }}">
+  <link rel="shortcut icon" href="{{ URL::to('assets/images/shiva2-122x145.png" type="image/x-icon') }}">
   <title>Home</title>
   <link rel="stylesheet" href="{{ url('assets/web/assets/mobirise-icons/mobirise-icons.css') }}" type="text/css">
   <link rel="stylesheet" href="{{ url('assets/tether/tether.min.css') }}" type="text/css">
@@ -46,7 +46,7 @@
                     </a>
                 </span>
                 <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-5" href="index.html">
-                        WCMS</a></span>
+                        Woodsite</a></span>
             </div>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -55,20 +55,11 @@
                 <a class="nav-link link text-black display-5" href="{!! url('wcms') !!}">Home</a>
               </li>
               <li class="nav-item">
-                <a href="{!! url('wcms/order') !!}" class="nav-link link text-black display-5" >Order</a>
-              </li>
-              <li class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('wcms/froum') !!}">Forum</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}">About US</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
-                  <span class="mbri-setting3 mbr-iconfont mbr-iconfont-btn"></span></a>
               </li>
             </ul>
 
-            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-info display-4" href="{!! url('wcms/login') !!}">Login</a></div>
+            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-info display-4" href="{!! url('wcms/login') !!}"><span class="mbri-login"></span>&nbsp;Login</a></div>
         </div>
     </nav>
 </section>
@@ -82,12 +73,12 @@
     <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(35, 35, 35);"></div>
 
 
-    <div class="container align-left col-md-6">
-        <div class="media-container-row">
-            <img src="{{ URL::to('assets/images/wood-signup.jpg') }}" alt="" style="width: 485px; height: 500px;">
+    <div class="container mbr-align-left col-md-6" style="opacity: 0.9;">
+        <div class="media-container-row"style="opacity: 0.9;">
+            <img src="{{ URL::to('assets/images/joinus.jpg') }}" alt="" style="opacity: 0.7;">
+        </div>
 
         </div>
-    </div>
 
     <div class="container align-right col-md-6">
             <div class="card">
@@ -105,7 +96,7 @@
                             <div class="form-group col-md-12">
                                 <div class="input-group">
                                 <div class="input-group-prepend">
-                                <i class="input-group-text fas fa-user-tie"></i>
+                                <span class="input-group-text fa fa-user"></span>
                             </div>
                                 <input id="fullname" type="text" style="font-size:0.8rem;" class="form-control h4 {{ $errors->has('name') ? ' is-invalid' : '' }}" name="fullname" value="{{ old('name') }}" placeholder="Fullname" required autofocus>
 
@@ -120,7 +111,7 @@
                          <div class="form-group col-md-12">
                                 <div class="input-group">
                                 <div class="input-group-prepend">
-                            <i class="input-group-text fa fa-map-marker-alt"></i>
+                            <span class="input-group-text mbri-pin"></span>
                         </div>
 
                            
@@ -236,12 +227,13 @@
 
     <div class="container">
         <div class="media-container-row content text-white">
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 mbr-black align-center">
                 <div class="media-wrap">
-                    <a href="index.html">
-                        <img src="{{ URL::to('assets/images/shiva-162x193.png') }}" alt="Mobirise" title="">
+                    <a href="{!! url('wcms') !!}">
+                        <img src="{{URL::to('assets/images/shiva-162x193.png') }}" alt="Mobirise" title="">
                     </a>
                 </div>
+                <h3><b>Woodsite</b></h3>
             </div>
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
                 <h5 class="pb-3">
@@ -261,7 +253,12 @@
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
                 <h5 class="pb-3">
                     Contents</h5>
-                <p class="mbr-text"><a href="index.html" class="text-warning">Home</a><br><a href="page2.html" class="text-warning">Order</a><br><a href="page1.html" class="text-warning">Forum</a><br><a href="page5.html" class="text-warning">About Us</a><br><a href="page4.html" class="text-warning">Settings</a></p>
+                <p class="mbr-text">
+                  <a href="{!! url('wcms') !!}" class="text-warning">Home</a><br>
+                  <a href="{!! url('wcms/aboutus2') !!}" class="text-warning">About Us</a><br>
+                  <a href="{!! url('wcms/login') !!}" class="text-warning">Login</a>  <br>               
+                  <a href="{!! url('wcms/register') !!}" class="text-warning">Sign Up</a>
+                  </p> 
             </div>
         </div>
         <div class="footer-lower">

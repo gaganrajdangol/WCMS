@@ -75,11 +75,11 @@ class Settings extends Controller
         $user=User::find($id);
         $user->fullname=$request->fullname;
         $user->address=$request->address;
-        $user->contact=$request->contaact;
+        $user->contact=$request->contact;
         $user->email=$request->email;
         $user->username=$request->username;
            $user->save();
-           return view('woodcraft.inventory')->with('success','Profile Updated'); 
+           return view('woodcraft.settings')->with('success','Profile Updated'); 
            
     }
 

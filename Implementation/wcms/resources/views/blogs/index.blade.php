@@ -1,2 +1,0 @@
-@extend('partial.layout')
-@section('')

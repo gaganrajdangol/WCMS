@@ -35,54 +35,7 @@ class Wcmscontroller extends Controller
      return view('woodcraft.orderprocess');
     }
 
-    // function checklogin(Request $request)
-    // {
-    //  $this->validate($request, [
-    //   'email'   => 'required|email',
-    //   'password'  => 'required|alphaNum|min:3'
-    //  ]);
-
-    //  $user_data = array(
-    //   'email'  => $request->get('email'),,
-    //   'password' => $request->get('password')
-    //  );
-
-    //  if(Auth::attempt($user_data))
-    //  {
-    //   return redirect('woodcraft/index');
-    //  }
-    //  else
-    //  {
-    //   return back()->with('error', 'Wrong Login Details');
-    //  }
-
-    // function successlogin()
-    // {
-    //  return view('woodcraft.index2');
-    // }
-
-    // function logout()
-    // {
-    //  Auth::logout();
-    //  return redirect('woodcraft.index');
-    // }
-
-
-
-    // }
-    //wcms
-    // protected $image_dir = "uploads/blogs"
-
-    // public function getJsonResponse($param = null)
-    // {
-
-    // }
-
-    // public function index()
-    // {
-    	
-    // 	return view('woodcraft.index');
-    // }
+   
     
     public function order()
     {
@@ -145,7 +98,54 @@ class Wcmscontroller extends Controller
     {
         return view('woodcraft.orderlist');
     }
+ // function checklogin(Request $request)
+    // {
+    //  $this->validate($request, [
+    //   'email'   => 'required|email',
+    //   'password'  => 'required|alphaNum|min:3'
+    //  ]);
 
+    //  $user_data = array(
+    //   'email'  => $request->get('email'),,
+    //   'password' => $request->get('password')
+    //  );
+
+    //  if(Auth::attempt($user_data))
+    //  {
+    //   return redirect('woodcraft/index');
+    //  }
+    //  else
+    //  {
+    //   return back()->with('error', 'Wrong Login Details');
+    //  }
+
+    // function successlogin()
+    // {
+    //  return view('woodcraft.index2');
+    // }
+
+    // function logout()
+    // {
+    //  Auth::logout();
+    //  return redirect('woodcraft.index');
+    // }
+
+
+
+    // }
+    //wcms
+    // protected $image_dir = "uploads/blogs"
+
+    // public function getJsonResponse($param = null)
+    // {
+
+    // }
+
+    // public function index()
+    // {
+        
+    //  return view('woodcraft.index');
+    // }
 
     
 }

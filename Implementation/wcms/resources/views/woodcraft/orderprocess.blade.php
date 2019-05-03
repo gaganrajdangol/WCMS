@@ -102,7 +102,7 @@ var quantitiy=1;
 </head>
 <body>
    
-    <section class="menu cid-rg6hCT4CBx" once="menu" id="menu2-b">
+     <section class="menu cid-rg6hCT4CBx" once="menu" id="menu2-b">
 
     
 
@@ -132,29 +132,38 @@ var quantitiy=1;
                 <a class="nav-link link text-black display-5" style="color: #55b4d4;" href="{!! url('wcms/index2') !!}">Home</a>
               </li>
               <li class="nav-item">
-                <a href="{!! url('/order2') !!}" class="nav-link link text-black display-5" ><span style="color:#82786e;">Order</span></a>
+                <a title="Buy Products" href="{!! url('/order2') !!}" class="nav-link link text-black display-5" style=""><span style="color:#82786e;">Order</span></a>
               </li>
-              <li class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('/post') !!}">Forum</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}">About US</a>
+              <li title="Our Community" class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('/post') !!}">Forum</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
+                <a title="Learn more about us" class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}">About US</a>
+              </li>
+              <li class="nav-item">
+                <a title="Settings" class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
                   <span class="mbri-setting3 mbr-iconfont mbr-iconfont-btn"></span>
                 </a>
+              </li>              
+              <li class="nav-item">
+                <a title="Help" class="nav-link link text-black display-5" href="" data-target="#modalHelp" data-toggle="modal">
+                  <span class="mbri-info mbr-iconfont mbr-iconfont-btn"></span>
+                </a>
+              </li>
+              <li class="nav-item">
               </li>
 
 <li class="nav-item dropdown">
 
                                 <a class="nav-link link dropdown-toggle btn btn-sm btn-info mbr-white col-md-12" style="border-radius: 45px;" data-toggle="dropdown-submenu" href="#"><h5>{{Auth::user()->fullname}}</h5><span class="caret"></span></a>
                              
-                                <div class="dropdown-menu btn btn-sm btn-info ml-4 col-md-10" style="border-radius: 20px;">
+                                <div class="dropdown-menu btn btn-sm btn-info ml-4 col-md-11" style="border-radius: 20px;">
                                     <a class="dropdown-item mbr-white" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><h5>Logout</h5></a>
+                                                     document.getElementById('logout-form').submit();"><span class="mbri-logout display-5"></span><h5> Logout</h5></a>
                                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    <a href="{!! url('/orderlist') !!}" class="mbr-white"><span class="mbri-shopping-cart display-5"></span><h5> Orderlist</h5></a>
+                                </div>
                                 </li>
 
 
@@ -167,12 +176,39 @@ var quantitiy=1;
     </nav>
 </section>
 
+
+<div class="modal fade col-md-12" id="modalHelp">
+  <div class="modal-dialog modal-dialog-center modal-lg col-md-10">
+    <div class="modal-content">
+      <div class="modal-header">
+         &nbsp &nbsp
+        <h2 class="text-center" id="">User Guide and Help</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body" style="height: 700px;">
+        <embed src="{{ url('docs/usermanual.pdf') }}" type="application/pdf" width="100%" height="100%" />
+        
+    </div>
+    </div>
+  </div>
+</div>
+
+
+
 <section class="mbr-section content4 cid-rg9atgb20I" id="content4-21">
 
     
 
     <div class="container">
         <div class="media-container-row">
+          @foreach($orders as $order)
+          <div class="">
+            <ul class="breadcrumb">
+  <li><a href="{!! url('/order2') !!}">Order / &nbsp;</a></li>
+  <li> Ordering - {{$order->item_name}}</li>
+</ul>
+          </div>
+          @endforeach
             <div class="title col-12 col-md-8">
                 <h2 class="align-center pb-3 mbr-fonts-style display-2">
                     Order Ready!</h2>
@@ -191,7 +227,7 @@ var quantitiy=1;
     
     <!--Container-->
     @foreach($orders as $order)
-    <form method="POST" action="{!!url('/orderprocess',$order->itemid)!!}">
+    <form method="POST" action="{!!url('/order',$order->itemid)!!}">
     @csrf
     <div class="container">
         <div class="col-md-12">
@@ -226,7 +262,7 @@ var quantitiy=1;
 
                                     </span>
 
-                                    <input type="text" id="quantity" name="quantity" class="form-control input-number align-center" value="1" min="1" max="100">
+                                    <input type="number" id="quantity" name="quantity" class="form-control input-number align-center" value="1" min="1" max="100" requried readonly>
 
                                     <span class="input-group-btn">
 
@@ -250,7 +286,7 @@ var quantitiy=1;
                     </div>
                     <!--Btn-->
                     <div class="mbr-section-btn pt-3 align-left">
-                      <button type="submit" class="btn btn-warning-outline display-4">
+                      <button type="submit" class="btn btn-warning-outline display-4" onclick="if (!confirm('You are about to order this item. Are you sure?')) { return false }">
                             Order</button></div>
                 </div>
             </div>
@@ -494,29 +530,29 @@ Your item will be delivered soon. Thankyou for using our service.</div><div clas
 
 </section>
 
-<section class="cid-rgiI40l11u" id="footer1-10">
+<section class="cid-rgiETv0yeQ" id="footer1-z">
 
     
 
     
 
     <div class="container">
-        <div class="media-container-row content align-center">
-            <div class="col-12 col-md-3">
+        <div class="media-container-row content text-white">
+            <div class="col-12 col-md-3 mbr-black align-center">
                 <div class="media-wrap">
-                    <a href="index.html">
-                        <img src="{{ URL::to('assets/images/shiva-162x193.png') }}" alt="" title="">
+                    <a href="{!! url('wcms/index2') !!}">
+                        <img src="{{ url('assets/images/shiva-162x193.png') }}" alt="Mobirise" title="">
                     </a>
                 </div>
-                <h2><b>Woodsite</b></h2>
+                <h2>WOODSITE</h2>
             </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+            <div class="col-12 col-md-4 mbr-fonts-style display-7">
                 <h5 class="pb-3">
                     Address
                 </h5>
                 <p class="mbr-text"></p><p>Mahakvimarga, Kathmandu Dillibazar</p><p></p>
             </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+            <div class="col-12 col-md-4 mbr-fonts-style display-7">
                 <h5 class="pb-3">
                     Contacts
                 </h5>
@@ -527,8 +563,16 @@ Your item will be delivered soon. Thankyou for using our service.</div><div clas
             </div>
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
                 <h5 class="pb-3">
-                    Contents</h5>
-                <p class="mbr-text"><a href="index.html" class="text-warning">Home</a><br><a href="page2.html" class="text-warning">Order</a><br><a href="page1.html" class="text-warning">Forum</a><br><a href="page5.html" class="text-warning">About Us</a><br><a href="page4.html" class="text-warning">Settings</a></p>
+                    Menu</h5>
+                <p class="mbr-text">
+                  <a href="{!! url('wcms') !!}" class="text-warning">Home</a><br>
+                  <a href="{!! url('wcms/order2') !!}" class="text-warning">Order</a><br>
+                  <a href="{!! url('/post') !!}" class="text-warning">Forum</a><br>
+                  <a href="{!! url('wcms/aboutus') !!}" class="text-warning">About Us</a><br>
+                  <a href="{!! url('wcms/settings') !!}" class="text-warning">Settings</a><br>
+                  <a href="{!! url('/orderlist') !!}" class="text-warning">Orderlist</a><br>
+                  <a href="" data-target="#modalHelp" data-toggle="modal" class="text-warning">Help</a><br>
+                </p>
             </div>
         </div>
         <div class="footer-lower">

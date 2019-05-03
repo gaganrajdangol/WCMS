@@ -46,8 +46,6 @@ public function orderlist()
      */
     public function create(Request $request, $id)
     {
-        DB::beginTransaction();
-        try {
             $user=auth()->user();
             $order = new Order();
              $order->order_date=(Carbon\Carbon::now('Asia/Kathmandu')->toDateString('Y-m-d'));
@@ -55,26 +53,14 @@ public function orderlist()
              $order->userid=$user->userid;
             $order->itemid=$id;
             $order->save();
-        } catch (Exception $e) {
-            DB::rollback();
-            throw $e;
-        }
-
-        try {
-            $getOrder = DB::table('order')->select('orderid')->get()->last();
 
             $getBill = DB::table('order')
             ->join('item','item.itemid','=','order.itemid') 
-            ->where('order.orderid','=',$getOrder)
             ->select('order.*','item.*')
-            ->get();
-        } catch (Exception $e) {
-            
-        }
+            ->get()->last();
 
-        DB::commit();
         
-        return view('woodcraft.receipt',compact('getBill'))->with('Success', 'Order Successful. Your order will be delivered within 24 hours.');    
+        return view('woodcraft.receipt',compact('getBill'));    
     }
 
     /**

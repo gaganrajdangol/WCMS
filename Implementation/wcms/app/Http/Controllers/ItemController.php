@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Item;
+use DB;
 
 class ItemController extends Controller
 {
@@ -55,6 +56,7 @@ class ItemController extends Controller
             return redirect('/additems');
         }
 
+
         $item ->item_name=$request->item_name;
         $item ->item_type=$request->item_type;
         $item ->price=$request->price;
@@ -64,6 +66,26 @@ class ItemController extends Controller
 
         $item->save();
         return redirect()->to('/additems')->with('success','New Item Added.');
+    }
+
+    public function search(Request $request)
+    {
+        if(is_null($request->searchText))
+        {
+
+            $item=DB::table('item')
+            ->get(); 
+        }
+
+        else
+        {
+           $item=DB::table('item')
+            ->where('item.item_name', 'LIKE','%'.$request->searchText.'%')
+            ->orWhere('item.item_type', 'LIKE','%'.$request->searchText.'%')
+            ->get(); 
+        }
+
+        return view('woodcraft.searchItem', compact('item'));
     }
         
 

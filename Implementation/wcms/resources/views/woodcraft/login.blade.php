@@ -46,7 +46,7 @@
                     </a>
                 </span>
                 <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-5" href="index.html">
-                        WCMS</a></span>
+                        Woodsite</a></span>
             </div>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -55,20 +55,11 @@
                 <a class="nav-link link text-black display-5" href="{!! url('wcms') !!}">Home</a>
               </li>
               <li class="nav-item">
-                <a href="{!! url('wcms/order') !!}" class="nav-link link text-black display-5" >Order</a>
-              </li>
-              <li class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('wcms/froum') !!}">Forum</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}">About US</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
-                  <span class="mbri-setting3 mbr-iconfont mbr-iconfont-btn"></span></a>
               </li>
             </ul>
 
-            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-info display-4" href="{!! url('wcms/login') !!}">Login</a></div>
+            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-info display-4" href="{!! url('wcms/login') !!}"><span class="mbri-login"></span>&nbsp;Login</a></div>
         </div>
     </nav>
 </section>
@@ -79,7 +70,11 @@
 
     <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(35, 35, 35);"></div>
 
-    <div class="container align-left col-md-6">
+    <div class="container mbr-align-left col-md-6" style="opacity: 0.9;">
+        <div class="media-container-row"style="opacity: 0.9;">
+            <img src="{{ URL::to('assets/images/login.jpg') }}" alt="" style="opacity: 0.9;">
+
+        </div>
     </div>
 
     <div class="container align-right col-md-3">
@@ -167,12 +162,13 @@
 
     <div class="container">
         <div class="media-container-row content text-white">
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 mbr-black align-center">
                 <div class="media-wrap">
                     <a href="{!! url('wcms') !!}">
-                        <img src="{{ URL::to('assets/images/shiva-162x193.png') }}" alt="Mobirise" title="">
+                        <img src="{{URL::to('assets/images/shiva-162x193.png') }}" alt="Mobirise" title="">
                     </a>
                 </div>
+                <h3><b>Woodsite</b></h3>
             </div>
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
                 <h5 class="pb-3">
@@ -193,12 +189,11 @@
                 <h5 class="pb-3">
                     Contents</h5>
                 <p class="mbr-text">
-                    <a href="{!! url('wcms') !!}" class="text-warning">Home</a><br>
-                    <a href="{!! url('wcms/order') !!}" class="text-warning">Order</a><br>
-                    <a href="{!! url('/post') !!}" class="text-warning">Forum</a><br>
-                    <a href="{!! url('wcms/aboutus') !!}" class="text-warning">About Us</a><br>
-                    <a href="page4.html" class="text-warning">Settings</a>
-                </p>
+                  <a href="{!! url('wcms') !!}" class="text-warning">Home</a><br>
+                  <a href="{!! url('wcms/aboutus2') !!}" class="text-warning">About Us</a><br>
+                  <a href="{!! url('wcms/login') !!}" class="text-warning">Login</a>  <br>               
+                  <a href="{!! url('wcms/register') !!}" class="text-warning">Sign Up</a>
+                  </p> 
             </div>
         </div>
         <div class="footer-lower">

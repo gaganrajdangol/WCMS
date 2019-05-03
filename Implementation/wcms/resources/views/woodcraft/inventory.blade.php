@@ -126,11 +126,12 @@
                                 <label class="col-md-4 control-label" for="item_type">Item Type</label>
                                 <div class="col-md-8">
                                     <select id="item_type" name="item_type" class="form-control">
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="D">D</option>
-                                        <option value="E">E</option>
+                                        <option value="Idol">Idol</option>
+                                        <option value="Mandala">Mandala</option>
+                                        <option value="Blocks">Blocks</option>
+                                        <option value="Mandap">Mandap</option>
+                                        <option value="Portrait">Potrait</option>
+                                        <option value="Accessories">Accessories</option>
                                     </select>
                                 </div>
                             </div>

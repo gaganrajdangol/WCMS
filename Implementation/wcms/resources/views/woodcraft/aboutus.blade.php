@@ -23,7 +23,7 @@
 </head>
 <body>
   
-   <section class="menu cid-rg6hCT4CBx" once="menu" id="menu2-b">
+<section class="menu cid-rg6hCT4CBx" once="menu" id="menu2-b">
 
     
 
@@ -44,7 +44,7 @@
                     </a>
                 </span>
                 <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-5" href="{!! url('wcms/index2') !!}">
-                        WCMS</a></span>
+                        Woodsite</a></span>
             </div>
         </div>
         <div class="collapse navbar-collapse align-right" id="navbarSupportedContent">
@@ -53,29 +53,38 @@
                 <a class="nav-link link text-black display-5" style="color: #55b4d4;" href="{!! url('wcms/index2') !!}">Home</a>
               </li>
               <li class="nav-item">
-                <a href="{!! url('/order2') !!}" class="nav-link link text-black display-5" >Order</a>
+                <a title="Buy Products" href="{!! url('/order2') !!}" class="nav-link link text-black display-5" style="">Order</a>
               </li>
-              <li class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('/post') !!}">Forum</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}"><span style="color:#82786e;">About Us</span></a>
+              <li title="Our Community" class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('/post') !!}">Forum</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
+                <a title="Learn more about us" class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}"><span style="color:#82786e;">About Us</span></a>
+              </li>
+              <li class="nav-item">
+                <a title="Settings" class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
                   <span class="mbri-setting3 mbr-iconfont mbr-iconfont-btn"></span>
                 </a>
+              </li>              
+              <li class="nav-item">
+                <a title="Help" class="nav-link link text-black display-5" href="" data-target="#modalHelp" data-toggle="modal">
+                  <span class="mbri-info mbr-iconfont mbr-iconfont-btn"></span>
+                </a>
+              </li>
+              <li class="nav-item">
               </li>
 
 <li class="nav-item dropdown">
 
                                 <a class="nav-link link dropdown-toggle btn btn-sm btn-info mbr-white col-md-12" style="border-radius: 45px;" data-toggle="dropdown-submenu" href="#"><h5>{{Auth::user()->fullname}}</h5><span class="caret"></span></a>
                              
-                                <div class="dropdown-menu btn btn-sm btn-info ml-4 col-md-10" style="border-radius: 20px;">
+                                <div class="dropdown-menu btn btn-sm btn-info ml-4 col-md-11" style="border-radius: 20px;">
                                     <a class="dropdown-item mbr-white" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><h5>Logout</h5></a>
+                                                     document.getElementById('logout-form').submit();"><span class="mbri-logout display-5"></span><h5> Logout</h5></a>
                                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    <a href="{!! url('/orderlist') !!}" class="mbr-white"><span class="mbri-shopping-cart display-5"></span><h5> Orderlist</h5></a>
+                                </div>
                                 </li>
 
 
@@ -88,28 +97,45 @@
     </nav>
 </section>
 
-<section class="engine"><a href="https://mobirise.info/l">free website templates</a></section><section class="testimonials1 cid-rg8ER7VnFx" id="testimonials1-1q">
 
-    
+<div class="modal fade col-md-12" id="modalHelp">
+  <div class="modal-dialog modal-dialog-center modal-lg col-md-10">
+    <div class="modal-content">
+      <div class="modal-header">
+         &nbsp &nbsp
+        <h2 class="text-center" id="">User Guide and Help</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body" style="height: 700px;">
+        <embed src="{{ url('docs/usermanual.pdf') }}" type="application/pdf" width="100%" height="100%" />
+        
+    </div>
+    </div>
+  </div>
+</div>
+
+<section class="testimonials1 cid-rg8ER7VnFx mbr-parallax-background" id="testimonials1-1q" style="background-image: url('{{ url::to('assets/images/izzie-r-418251.jpg') }}'); ">
+
+    <div class="mbr-overlay" style="opacity: 0.4; background-color: rgb(5, 5, 5);"></div>
 
     
     <div class="container">
         <div class="media-container-row">
             <div class="title col-12 align-center">
-                <h2 class="pb-3 mbr-fonts-style display-2">
-                    About Us</h2>
-                <h3 class="mbr-section-subtitle mbr-light pb-3 mbr-fonts-style display-5">Reviews</h3>
+                <h2 class="pb-3 mbr-fonts-style display-2 mbr-white">
+                    <b>About Us</b></h2>
+                <h3 class="mbr-section-subtitle mbr-white pb-3 mbr-fonts-style display-5" style="color: white;">Reviews</h3>
             </div>
         </div>
     </div>
 
     <div class="container pt-3 mt-2">
         <div class="media-container-row">
-            <div class="mbr-testimonial p-3 align-center col-12 col-md-6 col-lg-4">
-                <div class="panel-item p-3">
+            <div class="mbr-testimonial p-3 align-center col-12 col-md-6 col-lg-4" style="opacity: 0.9;">
+                <div class="panel-item p-3" style="box-shadow: 5px 10px 18px black;">
                     <div class="card-block">
                         <div class="testimonial-photo">
-                            <img src="assets/images/noimage-240x149.png" alt="" title="">
+                            <img src="{{ URL::to('assets/images/programmer.jpg') }}" alt="" title="">
                         </div>
                         <p class="mbr-text mbr-fonts-style display-5">★★★★☆</p>
                     </div>
@@ -122,11 +148,11 @@
                 </div>
             </div>
 
-            <div class="mbr-testimonial p-3 align-center col-12 col-md-6 col-lg-4">
-                <div class="panel-item p-3">
+            <div class="mbr-testimonial p-3 align-center col-12 col-md-6 col-lg-4" style="opacity: 0.9;">
+                <div class="panel-item p-3" style="box-shadow: 5px 10px 18px black;"opacity: 0.9;>
                     <div class="card-block">
                         <div class="testimonial-photo">
-                            <img src="assets/images/noimage-240x149.png" alt="" title="">
+                            <img src="{{ URL::to('assets/images/designer.jpg') }}" alt="" title="">
                         </div>
                         <p class="mbr-text mbr-fonts-style display-5">★★★★☆<br></p>
                     </div>
@@ -138,17 +164,17 @@
                 </div>
             </div>
 
-            <div class="mbr-testimonial p-3 align-center col-12 col-md-6 col-lg-4">
-                <div class="panel-item p-3">
+            <div class="mbr-testimonial p-3 align-center col-12 col-md-6 col-lg-4" style="opacity: 0.9;">
+                <div class="panel-item p-3" style="box-shadow: 5px 10px 18px black;"opacity: 0.9;>
                     <div class="card-block">
                         <div class="testimonial-photo">
-                            <img src="assets/images/noimage-240x149.png" alt="" title="">
+                            <img src="{{ URL::to('assets/images/developer.jpg') }}" alt="" title="">
                         </div>
                         <p class="mbr-text mbr-fonts-style display-5">★★★★★<br></p>
                     </div>
                     <div class="card-footer">
                         <div class="mbr-author-name mbr-bold mbr-fonts-style display-7">
-                             Bibek Dahal</div>
+                             Saugat K.C</div>
                         <small class="mbr-author-desc mbr-italic mbr-light mbr-fonts-style display-7">
                                Developer</small>
                     </div>
@@ -161,7 +187,8 @@
 
             
         </div>
-    </div>   
+    </div>
+    <br><br><br><br>   
 </section>
 
 <section class="testimonials2 cid-rg8VEVkawb" id="testimonials2-1t">
@@ -173,7 +200,7 @@
     <div class="container">
         <div class="media-container-row">
             <div class="mbr-figure pr-lg-5" style="width: 130%;">
-              <img src="assets/images/natraj-2-812x1024.jpg" alt="" title="">
+              <img src="{{ URL::to('assets/images/testimonial.jpg') }}" alt="" title="">
             </div>
             <div class="media-content px-3 align-self-center mbr-white py-2">
                     <p class="mbr-text testimonial-text mbr-fonts-style display-7">
@@ -188,15 +215,15 @@
     </div>
 </section>
 
-<section class="mbr-section contacts3 cid-rg8EhL7dNK" id="contacts3-1m">
+<section class="mbr-section contacts3 cid-rg8EhL7dNK mbr-parallax-background" id="contacts3-1m" style="background-image: url('{{ url::to('assets/images/izzie-r-418251.jpg') }}'">
     <!---->
     
     <!---->
     <!--Overlay-->
-    
+    <div class="mbr-overlay" style="opacity: 0.4; background-color: rgb(5, 5, 5);"></div>
     <!--Container-->
     <div class="container">
-        <div class="row">
+        <div class="row mbr-white">
             <!--Titles-->
             <div class="title col-12">
                 <h2 class="align-left mbr-fonts-style display-1">
@@ -214,7 +241,7 @@
                                 <h5 class="align-left mbr-fonts-style display-5">
                                     Address:
                                 </h5>
-                                <p class="mbr-text align-left mbr-fonts-style display-7">
+                                <p class="mbr-text align-left mbr-fonts-style display-7" style="color: white;">
                                     Mahakavimarga, Kathmandu</p>
                             </div>
                         </div>
@@ -222,13 +249,13 @@
                     <div class="col-12 col-md-6">
                         <div class="wrapper">
                             <span class="iconfont-wrapper">
-                                <span class="amp-iconfont icon fa-phone fa"></span>
+                                <span class="amp-iconfont icon fas fa-phone"></span>
                             </span>
                             <div class="b-info b-phone">
                                 <h5 class="align-left mbr-fonts-style display-5">
                                     Phone:
                                 </h5>
-                                <p class="mbr-text align-left mbr-fonts-style display-7">
+                                <p class="mbr-text align-left mbr-fonts-style display-7" style="color: white;">
                                     +977-9860058411</p>
                             </div>
                         </div>
@@ -236,13 +263,13 @@
                     <div class="col-12 col-md-6">
                         <div class="wrapper">
                             <span class="iconfont-wrapper">
-                                <span class="amp-iconfont icon fa-comment-o fa"></span>
+                                <span class="amp-iconfont icon fa-comment-o fa mbri-letter"></span>
                             </span>
                             <div class="b-info b-mail">
                                 <h5 class="align-left mbr-fonts-style display-5">
                                     E-mail:
                                 </h5>
-                                <p class="mbr-text align-left mbr-fonts-style display-7">
+                                <p class="mbr-text align-left mbr-fonts-style display-7" style="color: white;">
                                     traditionalwoodcraftstore@gmail.com</p>
                             </div>
                         </div>
@@ -255,7 +282,7 @@
                             <div class="b-info b-mail">
                                 <h5 class="align-left mbr-fonts-style display-5">
                                     Facebook</h5>
-                                <p class="mbr-text align-left mbr-fonts-style display-7">
+                                <p class="mbr-text align-left mbr-fonts-style display-7" style="color: white;">
                                     facebook.com/tradwcs12</p>
                             </div>
                         </div>
@@ -270,10 +297,10 @@
 
      
 
-    <div class="google-map"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCy9r70T3NYf3PhvVflTo0_zdif2_IoIYs&amp;q=place_id:ChIJn6wOs6lZwokRLKy1iqRcoKw" allowfullscreen=""></iframe></div>
+    <div class="google-map"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.363569274891!2d85.32838241506204!3d27.706058782792446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb190a88516bf5%3A0x59b299e6a637be8c!2sMahakavi+Marg%2C+Kathmandu+44600!5e0!3m2!1sen!2snp!4v1555863656498!5m2!1sen!2snp" allowfullscreen=""></iframe></div>
 </section>
 
-<section class="cid-rgiI7myj1b" id="footer1-11">
+<section class="cid-rgiETv0yeQ" id="footer1-z">
 
     
 
@@ -281,20 +308,21 @@
 
     <div class="container">
         <div class="media-container-row content text-white">
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 mbr-black align-center">
                 <div class="media-wrap">
-                    <a href="{!! url('wcms') !!}">
-                        <img src="{{ URL::to('assets/images/shiva-162x193.png') }}" alt="" title="">
+                    <a href="{!! url('wcms/index2') !!}">
+                        <img src="{{ url('assets/images/shiva-162x193.png') }}" alt="Mobirise" title="">
                     </a>
                 </div>
+                <h2>WOODSITE</h2>
             </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+            <div class="col-12 col-md-4 mbr-fonts-style display-7">
                 <h5 class="pb-3">
                     Address
                 </h5>
                 <p class="mbr-text"></p><p>Mahakvimarga, Kathmandu Dillibazar</p><p></p>
             </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+            <div class="col-12 col-md-4 mbr-fonts-style display-7">
                 <h5 class="pb-3">
                     Contacts
                 </h5>
@@ -305,13 +333,15 @@
             </div>
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
                 <h5 class="pb-3">
-                    Contents</h5>
+                    Menu</h5>
                 <p class="mbr-text">
-                    <a href="{!! url('wcms') !!}" class="text-warning">Home</a><br>
-                    <a href="{!! url('wcms/order') !!}" class="text-warning">Order</a><br>
-                    <a href="{!! url('/post') !!}" class="text-warning">Forum</a><br>
-                    <a href="{!! url('wcms/aboutus') !!}" class="text-warning">About Us</a><br>
-                    <a href="{!! url('wcms/settings') !!}" class="text-warning">Settings</a>
+                  <a href="{!! url('wcms') !!}" class="text-warning">Home</a><br>
+                  <a href="{!! url('/order2') !!}" class="text-warning">Order</a><br>
+                  <a href="{!! url('/post') !!}" class="text-warning">Forum</a><br>
+                  <a href="{!! url('wcms/aboutus') !!}" class="text-warning">About Us</a><br>
+                  <a href="{!! url('wcms/settings') !!}" class="text-warning">Settings</a><br>
+                  <a href="{!! url('/orderlist') !!}" class="text-warning">Orderlist</a><br>
+                  <a href="" data-target="#modalHelp" data-toggle="modal" class="text-warning">Help</a><br>
                 </p>
             </div>
         </div>

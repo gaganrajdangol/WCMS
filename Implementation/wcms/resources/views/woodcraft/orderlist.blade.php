@@ -24,7 +24,7 @@
 </head>
 <body>
 
-  <section class="menu cid-rg6hCT4CBx" once="menu" id="menu2-b">
+ <section class="menu cid-rg6hCT4CBx" once="menu" id="menu2-b">
 
     
 
@@ -54,29 +54,38 @@
                 <a class="nav-link link text-black display-5" style="color: #55b4d4;" href="{!! url('wcms/index2') !!}">Home</a>
               </li>
               <li class="nav-item">
-                <a href="{!! url('wcms/order2') !!}" class="nav-link link text-black display-5" style=""><span>Order</span></a>
+                <a title="Buy Products" href="{!! url('/order2') !!}" class="nav-link link text-black display-5" style="">Order</a>
               </li>
-              <li class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('/post') !!}">Forum</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}">About US</a>
+              <li title="Our Community" class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('/post') !!}">Forum</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
+                <a title="Learn more about us" class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}">About US</a>
+              </li>
+              <li class="nav-item">
+                <a title="Settings" class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
                   <span class="mbri-setting3 mbr-iconfont mbr-iconfont-btn"></span>
                 </a>
+              </li>              
+              <li class="nav-item">
+                <a title="Help" class="nav-link link text-black display-5" href="" data-target="#modalHelp" data-toggle="modal">
+                  <span class="mbri-info mbr-iconfont mbr-iconfont-btn"></span>
+                </a>
+              </li>
+              <li class="nav-item">
               </li>
 
 <li class="nav-item dropdown">
 
                                 <a class="nav-link link dropdown-toggle btn btn-sm btn-info mbr-white col-md-12" style="border-radius: 45px;" data-toggle="dropdown-submenu" href="#"><h5>{{Auth::user()->fullname}}</h5><span class="caret"></span></a>
                              
-                                <div class="dropdown-menu btn btn-sm btn-info ml-4 col-md-10" style="border-radius: 20px;">
+                                <div class="dropdown-menu btn btn-sm btn-info ml-4 col-md-11" style="border-radius: 20px;">
                                     <a class="dropdown-item mbr-white" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><h5>Logout</h5></a>
+                                                     document.getElementById('logout-form').submit();"><span class="mbri-logout display-5"></span><h5> Logout</h5></a>
                                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    <a href="{!! url('/orderlist') !!}" class="mbr-white"><span class="mbri-shopping-cart display-5"></span><h5> Orderlist</h5></a>
+                                </div>
                                 </li>
 
 
@@ -88,6 +97,24 @@
         </div>
     </nav>
 </section>
+
+
+<div class="modal fade col-md-12" id="modalHelp">
+  <div class="modal-dialog modal-dialog-center modal-lg col-md-10">
+    <div class="modal-content">
+      <div class="modal-header">
+         &nbsp &nbsp
+        <h2 class="text-center" id="">User Guide and Help</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body" style="height: 700px;">
+        <embed src="{{ url('docs/usermanual.pdf') }}" type="application/pdf" width="100%" height="100%" />
+        
+    </div>
+    </div>
+  </div>
+</div>
+
 
 
 <br><br>
@@ -123,6 +150,7 @@
                 <th class="head-item mbr-fonts-style display-7">Rate</th>
                 <th class="head-item mbr-fonts-style display-7">Quantity</th>
                 <th class="head-item mbr-fonts-style display-7">Description</th>
+                <th class="head-item mbr-fonts-style display-7">Print</th>
               </tr>
             </thead>
 
@@ -136,12 +164,15 @@
               <td class="body-item mbr-fonts-style display-7">{{ $orders->price }}</td>
               <td class="body-item mbr-fonts-style display-7">{{ $orders->quantity }}</td>
               <td class="body-item mbr-fonts-style display-7">{{ $orders->item_description }}</td>
+              <td class="body-item mbr-fonts-style display-7"><button class="btn btn-primary" title="Print the bill">
+                  <span class="mbri-print display-4"><div style="font-size: 10px;">Print</div></span>
+                </button></td>
                
             </tr>
             @endforeach
         @else
 
-            <h2 colspan="4"> No record found</h2>
+            <h2 colspan="4">You haven't ordered any products yet. <a href="{{ ('/order2') }}">Start Ordering</a></h2>
 
         @endif
           </tbody>
@@ -167,24 +198,29 @@
 </section>
 
 
-<section class="cid-rgiIjNRU8i" id="footer1-14">
+<section class="cid-rgiETv0yeQ" id="footer1-z">
+
+    
+
+    
+
     <div class="container">
-        <div class="media-container-row content mbr-black align-center">
-            <div class="col-12 col-md-3">
+        <div class="media-container-row content text-white">
+            <div class="col-12 col-md-3 mbr-black align-center">
                 <div class="media-wrap">
-                    <a href="index.html">
-                        <img src="{{ url::to('assets/images/shiva-162x193.png') }}" alt="Mobirise" title="">
+                    <a href="{!! url('wcms/index2') !!}">
+                        <img src="{{ url('assets/images/shiva-162x193.png') }}" alt="Mobirise" title="">
                     </a>
                 </div>
-                <h2><b>Woodsite</b></h2>
+                <h2>WOODSITE</h2>
             </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+            <div class="col-12 col-md-4 mbr-fonts-style display-7">
                 <h5 class="pb-3">
                     Address
                 </h5>
                 <p class="mbr-text"></p><p>Mahakvimarga, Kathmandu Dillibazar</p><p></p>
             </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+            <div class="col-12 col-md-4 mbr-fonts-style display-7">
                 <h5 class="pb-3">
                     Contacts
                 </h5>
@@ -195,8 +231,16 @@
             </div>
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
                 <h5 class="pb-3">
-                    Contents</h5>
-                <p class="mbr-text"><a href="index.html" class="text-warning">Home</a><br><a href="page2.html" class="text-warning">Order</a><br><a href="page1.html" class="text-warning">Forum</a><br><a href="page5.html" class="text-warning">About Us</a><br><a href="page4.html" class="text-warning">Settings</a></p>
+                    Menu</h5>
+                <p class="mbr-text">
+                  <a href="{!! url('wcms') !!}" class="text-warning">Home</a><br>
+                  <a href="{!! url('/order2') !!}" class="text-warning">Order</a><br>
+                  <a href="{!! url('/post') !!}" class="text-warning">Forum</a><br>
+                  <a href="{!! url('wcms/aboutus') !!}" class="text-warning">About Us</a><br>
+                  <a href="{!! url('wcms/settings') !!}" class="text-warning">Settings</a><br>
+                  <a href="{!! url('/orderlist') !!}" class="text-warning">Orderlist</a><br>
+                  <a href="" data-target="#modalHelp" data-toggle="modal" class="text-warning">Help</a><br>
+                </p>
             </div>
         </div>
         <div class="footer-lower">
@@ -241,6 +285,7 @@
         </div>
     </div>
 </section>
+
 
 
   <script src="{{ url('assets/web/assets/jquery/jquery.min.js') }}"></script>

@@ -3,7 +3,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="{{ URL::to('assets/images/logo4.png') }}" type="image/x-icon">
+  <link rel="shortcut icon" href="{{ URL::to('assets/images/shiva2-122x145.png') }}" type="image/x-icon">
   <meta name="description" content="">
   
   <title>Forum</title>
@@ -25,7 +25,7 @@
 </head>
 <body>
   
-   <section class="menu cid-rg6hCT4CBx" once="menu" id="menu2-b">
+    <section class="menu cid-rg6hCT4CBx" once="menu" id="menu2-b">
 
     
 
@@ -41,11 +41,11 @@
         <div class="menu-logo">
             <div class="navbar-brand">
                 <span class="navbar-logo">
-                    <a href="{!! url('wcms/index2') !!}">
+                    <a href="index.html">
                         <img src="{{ URL::to('assets/images/shiva2-122x145.png') }}" alt="wcms" title="" style="height: 5.1rem;">
                     </a>
                 </span>
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-5" href="index.html">
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-5" href="{!! url('wcms/index2') !!}">
                         Woodsite</a></span>
             </div>
         </div>
@@ -55,28 +55,38 @@
                 <a class="nav-link link text-black display-5" style="color: #55b4d4;" href="{!! url('wcms/index2') !!}">Home</a>
               </li>
               <li class="nav-item">
-                <a href="{!! url('wcms/order') !!}" class="nav-link link text-black display-5" >Order</a>
+                <a title="Buy Products" href="{!! url('/order2') !!}" class="nav-link link text-black display-5" style="">Order</a>
               </li>
-              <li class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('wcms/forum') !!}"><span style="color:#82786e;">Forum</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}">About US</a>
+              <li title="Our Community" class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('/post') !!}"><span style="color:#82786e;">Forum</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link link text-black display-5" href="">
-                  <span class="mbri-setting3 mbr-iconfont mbr-iconfont-btn"></span></a>
+                <a title="Learn more about us" class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}">About US</a>
+              </li>
+              <li class="nav-item">
+                <a title="Settings" class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
+                  <span class="mbri-setting3 mbr-iconfont mbr-iconfont-btn"></span>
+                </a>
+              </li>              
+              <li class="nav-item">
+                <a title="Help" class="nav-link link text-black display-5" href="" data-target="#modalHelp" data-toggle="modal">
+                  <span class="mbri-info mbr-iconfont mbr-iconfont-btn"></span>
+                </a>
+              </li>
+              <li class="nav-item">
               </li>
 
 <li class="nav-item dropdown">
 
                                 <a class="nav-link link dropdown-toggle btn btn-sm btn-info mbr-white col-md-12" style="border-radius: 45px;" data-toggle="dropdown-submenu" href="#"><h5>{{Auth::user()->fullname}}</h5><span class="caret"></span></a>
                              
-                                <div class="dropdown-menu btn btn-sm btn-info ml-4 col-md-10" style="border-radius: 20px;">
+                                <div class="dropdown-menu btn btn-sm btn-info ml-4 col-md-11" style="border-radius: 20px;">
                                     <a class="dropdown-item mbr-white" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><h5>Logout</h5></a>
+                                                     document.getElementById('logout-form').submit();"><span class="mbri-logout display-5"></span><h5> Logout</h5></a>
                                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    <a href="{!! url('/orderlist') !!}" class="mbr-white"><span class="mbri-shopping-cart display-5"></span><h5> Orderlist</h5></a>
+                                </div>
                                 </li>
 
 
@@ -88,6 +98,25 @@
         </div>
     </nav>
 </section>
+
+<div class="modal fade col-md-12" id="modalHelp">
+  <div class="modal-dialog modal-dialog-center modal-lg col-md-10">
+    <div class="modal-content">
+      <div class="modal-header">
+         &nbsp &nbsp
+        <h2 class="text-center" id="">User Guide and Help</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body" style="height: 700px;">
+        <embed src="{{ url('docs/usermanual.pdf') }}" type="application/pdf" width="100%" height="100%" />
+        
+    </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 
  <section class="header15 cid-rjUYoC1zhK mbr-parallax-background mt-5" id="header15-2" style="background-image: url('{{ url::to('assets/images/background4.jpg') }}'); ">
@@ -211,6 +240,9 @@
         @endif
 
 <hr><hr>
+
+
+
 <section class="cid-rgiETv0yeQ" id="footer1-z">
 
     
@@ -218,22 +250,22 @@
     
 
     <div class="container">
-        <div class="media-container-row content align-right">
-            <div class="col-12 col-md-3">
+        <div class="media-container-row content text-white">
+            <div class="col-12 col-md-3 mbr-black align-center">
                 <div class="media-wrap">
-                    <a href="index.html">
-                        <img src="{{ URL::to('assets/images/shiva-162x193.png') }}" alt="Mobirise" title="">
+                    <a href="{!! url('wcms/index2') !!}">
+                        <img src="{{ url('assets/images/shiva-162x193.png') }}" alt="Mobirise" title="">
                     </a>
                 </div>
-                <h2><b>Woodsite</b></h2>
+                <h2>WOODSITE</h2>
             </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+            <div class="col-12 col-md-4 mbr-fonts-style display-7">
                 <h5 class="pb-3">
                     Address
                 </h5>
                 <p class="mbr-text"></p><p>Mahakvimarga, Kathmandu Dillibazar</p><p></p>
             </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+            <div class="col-12 col-md-4 mbr-fonts-style display-7">
                 <h5 class="pb-3">
                     Contacts
                 </h5>
@@ -244,12 +276,16 @@
             </div>
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
                 <h5 class="pb-3">
-                    Contents</h5>
-                <p class="mbr-text"><a href="{!! url('wcms/index2') !!}" class="text-warning">Home</a><br>
-                  <a href="{!! url('wcms/order') !!}" class="text-warning">Order</a><br>
+                    Menu</h5>
+                <p class="mbr-text">
+                  <a href="{!! url('wcms') !!}" class="text-warning">Home</a><br>
+                  <a href="{!! url('/order2') !!}" class="text-warning">Order</a><br>
                   <a href="{!! url('/post') !!}" class="text-warning">Forum</a><br>
                   <a href="{!! url('wcms/aboutus') !!}" class="text-warning">About Us</a><br>
-                  <a href="{!! url('wcms/settings') !!}" class="text-warning">Settings</a></p>
+                  <a href="{!! url('wcms/settings') !!}" class="text-warning">Settings</a><br>
+                  <a href="{!! url('/orderlist') !!}" class="text-warning">Orderlist</a><br>
+                  <a href="" data-target="#modalHelp" data-toggle="modal" class="text-warning">Help</a><br>
+                </p>
             </div>
         </div>
         <div class="footer-lower">

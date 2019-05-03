@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="{{ url('assets/mobirise/css/mbr-additional.css') }}" type="text/css">
   <link rel="stylesheet" href="{{ url('assets/animate.css/animate.min.css') }}" type="text/css">
 
-
+ 
   
   
 </head>
@@ -27,7 +27,7 @@
 
 
 
-  <section class="menu cid-rg6hCT4CBx" once="menu" id="menu2-b">
+    <section class="menu cid-rg6hCT4CBx" once="menu" id="menu2-b">
 
     
 
@@ -57,30 +57,38 @@
                 <a class="nav-link link text-black display-5" style="color: #55b4d4;" href="{!! url('wcms/index2') !!}"><span style="color:#82786e;">Home</span></a>
               </li>
               <li class="nav-item">
-                <a href="{!! url('/order2') !!}" class="nav-link link text-black display-5" >Order</a>
+                <a title="Buy Products" href="{!! url('/order2') !!}" class="nav-link link text-black display-5" style="">Order</a>
               </li>
-              <li class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('/post') !!}">Forum</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}">About US</a>
+              <li title="Our Community" class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('/post') !!}">Forum</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
+                <a title="Learn more about us" class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}">About US</a>
+              </li>
+              <li class="nav-item">
+                <a title="Settings" class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
                   <span class="mbri-setting3 mbr-iconfont mbr-iconfont-btn"></span>
                 </a>
+              </li>              
+              <li class="nav-item">
+                <a title="Help" class="nav-link link text-black display-5" href="" data-target="#modalHelp" data-toggle="modal">
+                  <span class="mbri-info mbr-iconfont mbr-iconfont-btn"></span>
+                </a>
+              </li>
+              <li class="nav-item">
               </li>
 
 <li class="nav-item dropdown">
 
                                 <a class="nav-link link dropdown-toggle btn btn-sm btn-info mbr-white col-md-12" style="border-radius: 45px;" data-toggle="dropdown-submenu" href="#"><h5>{{Auth::user()->fullname}}</h5><span class="caret"></span></a>
                              
-                                <div class="dropdown-menu btn btn-sm btn-info ml-4 col-md-10" style="border-radius: 20px;">
+                                <div class="dropdown-menu btn btn-sm btn-info ml-4 col-md-11" style="border-radius: 20px;">
                                     <a class="dropdown-item mbr-white" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><h5>Logout</h5></a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                     document.getElementById('logout-form').submit();"><span class="mbri-logout display-5"></span><h5> Logout</h5></a>
+                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                  </div>
+                                    <a href="{!! url('/orderlist') !!}" class="mbr-white"><span class="mbri-shopping-cart display-5"></span><h5> Orderlist</h5></a>
+                                </div>
                                 </li>
 
 
@@ -94,6 +102,21 @@
 </section>
 
 
+<div class="modal fade col-md-12" id="modalHelp">
+  <div class="modal-dialog modal-dialog-center modal-lg col-md-10">
+    <div class="modal-content">
+      <div class="modal-header">
+         &nbsp &nbsp
+        <h2 class="text-center" id="">User Guide and Help</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body" style="height: 700px;">
+        <embed src="{{ url('docs/usermanual.pdf') }}" type="application/pdf" width="100%" height="100%" />
+        
+    </div>
+    </div>
+  </div>
+</div>
 
 <section class="cid-rg6iDVUTMv mbr-fullscreen mbr-parallax-background" id="header2-d">
 
@@ -109,88 +132,276 @@
                 
                 <p class="mbr-text pb-3 mbr-fonts-style display-5">
                     Decorate Your House, Office and Workspace with our products.<br>Hundred of items to choose from.</p>
-                <div class="mbr-section-btn"><a class="btn btn-md btn-secondary display-4" href="page2.html">Buy Products</a>
-                    <a class="btn btn-md btn-white-outline display-4" href="{{ url('wcms/register') }}">Join Us</a></div>
+                <div class="mbr-section-btn">
+                  <a class="btn btn-md btn-secondary display-4" href="{!! url('/order2') !!}" title="Order Products">Buy Products</a>
+                    <!-- <a title="Create an Account" class="btn btn-md btn-white-outline display-4" href="{{ url('wcms/register') }}">Join Us</a> -->
+                  </div>
             </div>
         </div>
     </div>
     
 </section>
 
-<section class="mbr-section" id="witsec-modal-window-block-p" data-rv-view="5">
-
-	<style>
-	/* Let's not animate the contents of modal windows */
-	.no-anim {
-		-webkit-animation: none !important;
-		-moz-animation: none !important;
-		-o-animation: none !important;
-		-ms-animation: none !important;
-		animation: none !important;
-	}
-	</style>
-
-	
-	
-
-	<script>
-	if (typeof OpenModal === 'undefined') {
-		OpenModal = function(modalName) {
-			if ($('#' + modalName).length)
-				$('#' + modalName).modal('show');
-			else
-				alert("Sorry, but there is no modal for " + modalName);
-		}
-	}
-
-	function modalSetCookie(cname, cvalue, exdays) {
-		var d = new Date();
-		d.setTime(d.getTime() + (exdays*24*60*60*1000));
-		var expires = "expires="+ d.toUTCString();
-		document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-	}
-
-	function modalGetCookie(cname) {
-		var name = cname + "=";
-		var decodedCookie = decodeURIComponent(document.cookie);
-		var ca = decodedCookie.split(';');
-		for(var i = 0; i <ca.length; i++) {
-			var c = ca[i];
-			while (c.charAt(0) == ' ') {
-				c = c.substring(1);
-			}
-			if (c.indexOf(name) == 0) {
-				return c.substring(name.length, c.length);
-			}
-		}
-		return "";
-	}
-	</script>
-
-</section>
 
 
 
-<section class="mbr-section content4 cid-rgipO2iHrq" id="content4-z">
+
 
     
+    <div class="countdown1 cid-rp3V6ZK5S1" id="countdown1-17" style="background-color: transparent;">
+      <div style="box-shadow: 5px 10px 18px black;" >
+    
+    <div class="container ">
+        <h2 class="mbr-section-title pb-3 align-center mbr-fonts-style display-2">
+            COUNTDOWN</h2>
+        <h3 class="mbr-section-subtitle align-center mbr-fonts-style display-5">
+            Get Ready For A New Product Launch And A Major Update</h3>
+        
+    </div>
+    <div class="container countdown-cont align-center">
+        <div class="daysCountdown" title="Days"></div>
+        <div class="hoursCountdown" title="Hours"></div> 
+        <div class="minutesCountdown" title="Minutes"></div> 
+        <div class="secondsCountdown" title="Seconds"></div>
+        <div class="countdown pt-5 mt-2" data-due-date="2020/04/30"> 
+        </div>
+    </div>
+  </div>
+  </div>
+
+
+
+<section class="features8 cid-rp3UMjXgEn mbr-parallax-background" id="features8-15" style="background-image: url('{{ url::to('assets/images/mbr-1920x1280.jpg') }}');">
+
+    
+
+    <div class="mbr-overlay" style="opacity: 0.6; background-color: rgb(35, 35, 35);">
+    </div>
 
     <div class="container">
         <div class="media-container-row">
-            <div class="title col-12 col-md-8">
-                
-                
-                
+
+            <div class="card  col-12 col-md-6 col-lg-4">
+                <div class="card-img">
+                    <span class="mbr-iconfont material-free-breakfast material"></span>
+                </div>
+                <div class="card-box align-center">
+                    <h4 class="card-title mbr-fonts-style display-7">
+                        Best Products
+                    </h4>
+                    <p class="mbr-text mbr-fonts-style display-7">
+                       We combine the perfect blend of creativity with the latest technology, driven by a resourceful team. 
+                    </p>
+                    <div class="mbr-section-btn text-center">
+                        <a href="" class="btn btn-secondary display-4">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
             </div>
+
+            <div class="card  col-12 col-md-6 col-lg-4">
+                <div class="card-img">
+                    <span class="mbr-iconfont socicon-stayfriends socicon"></span>
+                </div>
+                <div class="card-box align-center">
+                    <h4 class="card-title mbr-fonts-style display-7">
+                        Family Like
+                    </h4>
+                    <p class="mbr-text mbr-fonts-style display-7">
+                       We treat our customers no fifferent than our own family.
+                    </p>
+                    <div class="mbr-section-btn text-center">
+                        <a href="" class="btn btn-secondary display-4">
+                            Join Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card  col-12 col-md-6 col-lg-4">
+                <div class="card-img">
+                    <span class="mbr-iconfont fa-react fab"></span>
+                </div>
+                <div class="card-box align-center">
+                    <h4 class="card-title mbr-fonts-style display-7">
+                        Unique Styles
+                    </h4>
+                    <p class="mbr-text mbr-fonts-style display-7">
+                       We Conceptualize and execute an event in such a way that it Reinforce the image of product and service.
+                    </p>
+                    <div class="mbr-section-btn text-center">
+                        <a href="About Us" class="btn btn-secondary display-4">
+                            More
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            
         </div>
     </div>
 </section>
 
+<section class="timeline1 cid-rp3WuxcNh2 mbr-parallax-background" id="timeline1-19">
+
+    
+
+    <div class="mbr-overlay" style="opacity: 0.6; background-color: rgb(35, 35, 35);">
+    </div>
+
+    <div class="container align-center">
+        <h2 class="mbr-section-title mbr-white pb-3 mbr-fonts-style display-2"><strong>
+            Events
+        </strong></h2>
+        <h3 class="mbr-section-subtitle pb-5 mbr-fonts-style display-5" style="color: white;"><strong>
+            Stay Tune For Upcoming Events And Programs. Get an opportunity to grab a seat in one of the workshops. 
+        </strong></h3>
+
+        <div class="container timelines-container" mbri-timelines="">
+            <div class="row timeline-element reverse separline">      
+                 <div class="timeline-date-panel col-xs-12 col-md-6  align-left">         
+                    <div class="time-line-date-content">
+                        <p class="mbr-timeline-date mbr-fonts-style display-5">
+                            25 May 2019  
+                        </p>
+                    </div>
+                </div>
+           <span class="iconBackground"></span>
+            <div class="col-xs-12 col-md-6 align-right">
+                <div class="timeline-text-content">
+                    <h4 class="mbr-timeline-title pb-3 mbr-fonts-style display-5">
+                        45-day's Training
+                    </h4>
+                    <p class="mbr-timeline-text mbr-fonts-style display-7">
+                        On the support of Kathmandu Metropolitan City, Art and Craft Council of Federation of Handicraft Associations of Nepal is organizing a 45-day’s Training program on Woodcraft. Interested Members/ Artists may apply with the attached application form at FHAN Secretariat before 5 PM. Number of participants limited to: 15 Seats.
+                    </p>
+                 </div>
+            </div>
+            </div>
+
+            <div class="row timeline-element  separline">
+                <div class="timeline-date-panel col-xs-12 col-md-6 align-right">
+                    <div class="time-line-date-content">
+                        <p class="mbr-timeline-date mbr-fonts-style display-5">
+                            29 May 2019  
+                        </p>
+                    </div>
+                </div>
+                <span class="iconBackground"></span>
+                <div class="col-xs-12 col-md-6 align-left ">
+                    <div class="timeline-text-content">
+                        <h4 class="mbr-timeline-title pb-3 mbr-fonts-style display-5">
+                            Handicraft Trade Fair
+                        </h4>
+                        <p class="mbr-timeline-text mbr-fonts-style display-7">
+                            With the slogan, ‘Handicraft: Prospects for Prosperity’, Federation of Handicraft Association of Nepal (FHAN) is set to organize the 17th Handicraft Trade fair and also the 15th Handicraft Competition at Bhrikutimandap in Kathmandu from May 29 to June 1. The event will be organized with support from the Ministry of Commerce and Trade and Export Promotion Center. 
+                        </p>
+                    </div>
+                </div>
+            </div> 
+
+
+            <div class="row timeline-element reverse separline">
+                <div class="timeline-date-panel col-xs-12 col-md-6  align-left">
+                    <div class="time-line-date-content">
+                        <p class="mbr-timeline-date mbr-fonts-style display-5">
+                            3 April 2019
+                        </p>
+                    </div>
+                </div>
+                <span class="iconBackground"></span>
+                <div class="col-xs-12 col-md-6 align-right">
+                    <div class="timeline-text-content">
+                        <h4 class="mbr-timeline-title pb-3 mbr-fonts-style display-5">
+                            Rural ACtivation
+                        </h4>      
+                        <p class="mbr-timeline-text mbr-fonts-style display-7">
+                            Audiences differ from event to event and place to place. Accordingly, our creative team analyzes the right concept, words pattern, theme and many more elements that can support your event goals. Our efforts are centered to make it not only memorable, unique or astounding but also to grab each opportunity, create a new trusted relationship and attract more people to your event idea. We take complete care from the venue, timings, guests, required arrangements, AV/Devices, logistics and so forth. Talk to us and we shall share our most creative insights for your rural activation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row timeline-element  separline">
+                <div class="timeline-date-panel col-xs-12 col-md-6 align-right">
+                    <div class="time-line-date-content">
+                        <p class="mbr-timeline-date mbr-fonts-style display-5">
+                            4 August 2019
+                        </p>
+                    </div>
+                </div>
+                <span class="iconBackground"></span>
+                <div class="col-xs-12 col-md-6 align-left ">
+                    <div class="timeline-text-content">
+                        <h4 class="mbr-timeline-title pb-3 mbr-fonts-style display-5">
+                            EXPO DESIGN & EXECUTION
+                        </h4>
+                        <p class="mbr-timeline-text mbr-fonts-style display-7">                            
+With a decade of events, expertise and great resources at description WoodCraft is not only a full-service solution provider for all types of event and exhibition requirements but also has driven initiative focusing on marketing with break taking creatives, designs that will surely leave an embarking exponential impact on your audiences. Our league of never-ending solutions consistency has to lead us to also serve Expo Design and Execution services for the client. Stall Concepts, Stall designing, Stall formatting, Creative Designing, Material printing, Subsidiaries and accessories arrangements, giveaways are a few things we start with.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row timeline-element reverse separline">
+                <div class="timeline-date-panel col-xs-12 col-md-6  align-left">
+                    <div class="time-line-date-content">
+                        <p class="mbr-timeline-date mbr-fonts-style display-5">
+                            5 November 2019
+                        </p>
+                    </div>
+                </div>
+                <span class="iconBackground"></span>
+                <div class="col-xs-12 col-md-6 align-right">
+                    <div class="timeline-text-content">
+                        <h4 class="mbr-timeline-title pb-3 mbr-fonts-style display-5">
+                            ASSENT AVENUE OF ARTIST
+                        </h4>
+                        <p class="mbr-timeline-text mbr-fonts-style display-7">
+                            The primary objective of this exhibition is to promote and do marketing for skillful artist and students with promising dedication to learn, practice and excel in their field. This is a kind like "Art Trade Fair" where participant's one art would be in displayed on wall and rest some of their works would be available at the gallery for sales purpose. Audiences can buy their work from the show and this would directly aid participants to their educational expenses and for allowances. 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row timeline-element">
+                <div class="timeline-date-panel col-xs-12 col-md-6 align-right">
+                    <div class="time-line-date-content">
+                       <p class="mbr-timeline-date mbr-fonts-style display-5">
+                            30 April 2020
+                        </p>
+                    </div>
+                </div>
+                <span class="iconBackground"></span>
+                <div class="col-xs-12 col-md-6 align-left ">
+                    <div class="timeline-text-content">
+                        <h4 class="mbr-timeline-title pb-3 mbr-fonts-style display-5">
+                            Product Launch
+                        </h4>
+                        <p class="mbr-timeline-text mbr-fonts-style display-7">
+                            The very immediate requisite for any successful and balanced Product Launch is a finely tuned planning, persuasion strategy, staging your product scheduled sequence, and of course, timely execution. Markets are rapidly transforming, the competitive edge is pushing companies constantly to engage in a wider range of activities for a simple product introduction. We combine the perfect blend of creativity with the latest technology, driven by a resourceful team. 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            
+            
+
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
 <section class="cid-rgiETv0yeQ" id="footer1-z">
-
-    
-
-    
+ 
 
     <div class="container">
         <div class="media-container-row content text-white">
@@ -202,13 +413,13 @@
                 </div>
                 <h2>WOODSITE</h2>
             </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+            <div class="col-12 col-md-4 mbr-fonts-style display-7">
                 <h5 class="pb-3">
                     Address
                 </h5>
                 <p class="mbr-text"></p><p>Mahakvimarga, Kathmandu Dillibazar</p><p></p>
             </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+            <div class="col-12 col-md-4 mbr-fonts-style display-7">
                 <h5 class="pb-3">
                     Contacts
                 </h5>
@@ -219,8 +430,16 @@
             </div>
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
                 <h5 class="pb-3">
-                    Contents</h5>
-                <p class="mbr-text"><a href="index.html" class="text-warning">Home</a><br><a href="page2.html" class="text-warning">Order</a><br><a href="page1.html" class="text-warning">Forum</a><br><a href="page5.html" class="text-warning">About Us</a><br><a href="page4.html" class="text-warning">Settings</a></p>
+                    Menu</h5>
+                <p class="mbr-text">
+                  <a href="{!! url('wcms') !!}" class="text-warning">Home</a><br>
+                  <a href="{!! url('wcms/order2') !!}" class="text-warning">Order</a><br>
+                  <a href="{!! url('/post') !!}" class="text-warning">Forum</a><br>
+                  <a href="{!! url('wcms/aboutus') !!}" class="text-warning">About Us</a><br>
+                  <a href="{!! url('wcms/settings') !!}" class="text-warning">Settings</a><br>
+                  <a href="{!! url('/orderlist') !!}" class="text-warning">Orderlist</a><br>
+                  <a href="" data-target="#modalHelp" data-toggle="modal" class="text-warning">Help</a><br>
+                </p>
             </div>
         </div>
         <div class="footer-lower">
@@ -267,6 +486,7 @@
 </section>
 
 
+
   <script src=" {{ url('assets/web/assets/jquery/jquery.min.js') }}"></script>
   <script src=" {{ url('assets/popper/popper.min.js') }}"></script>
   <script src=" {{ url('assets/tether/tether.min.js') }}"></script>
@@ -276,6 +496,7 @@
   <script src=" {{ url('assets/touchswipe/jquery.touch-swipe.min.js') }}"></script>
   <script src=" {{ url('assets/theme/js/script.js') }}"></script>
   <script src=" {{ url('assets/parallax/jarallax.min.js') }}"></script>
+  <script src=" {{ url('assets/countdown/jquery.countdown.min.j') }}s"></script>
 
   
 </body>

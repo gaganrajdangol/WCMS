@@ -17,11 +17,16 @@
   <link rel="stylesheet" href=" {{ url('assets/socicon/css/styles.css') }}">
   <link rel="stylesheet" href=" {{ url('assets/theme/css/style.css') }}">
   <link rel="stylesheet" href=" {{ url('assets/mobirise/css/mbr-additional.css') }}" type="text/css">
+  <link rel="stylesheet" href=" {{ url('assets/animatecss/animate.min.css') }}">
+  <link rel="stylesheet" href=" {{ url('assets/theme/css/style.css') }}">
+  <link rel="stylesheet" href=" {{ url('assets/gallery/style.css') }}">
   
   
   
 </head>
 <body>
+
+
   <section class="menu cid-rg6hCT4CBx" once="menu" id="menu2-b">
 
     
@@ -52,29 +57,38 @@
                 <a class="nav-link link text-black display-5" style="color: #55b4d4;" href="{!! url('wcms/index2') !!}">Home</a>
               </li>
               <li class="nav-item">
-                <a href="{!! url('wcms/order') !!}" class="nav-link link text-black display-5" style=""><span style="color:#82786e;">Order</span></a>
+                <a title="Buy Products" href="{!! url('/order2') !!}" class="nav-link link text-black display-5" style=""><span style="color:#82786e;">Order</span></a>
               </li>
-              <li class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('/post') !!}">Forum</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}">About US</a>
+              <li title="Our Community" class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('/post') !!}">Forum</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
+                <a title="Learn more about us" class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}">About US</a>
+              </li>
+              <li class="nav-item">
+                <a title="Settings" class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
                   <span class="mbri-setting3 mbr-iconfont mbr-iconfont-btn"></span>
                 </a>
+              </li>              
+              <li class="nav-item">
+                <a title="Help" class="nav-link link text-black display-5" href="" data-target="#modalHelp" data-toggle="modal">
+                  <span class="mbri-info mbr-iconfont mbr-iconfont-btn"></span>
+                </a>
+              </li>
+              <li class="nav-item">
               </li>
 
 <li class="nav-item dropdown">
 
                                 <a class="nav-link link dropdown-toggle btn btn-sm btn-info mbr-white col-md-12" style="border-radius: 45px;" data-toggle="dropdown-submenu" href="#"><h5>{{Auth::user()->fullname}}</h5><span class="caret"></span></a>
                              
-                                <div class="dropdown-menu btn btn-sm btn-info ml-4 col-md-10" style="border-radius: 20px;">
+                                <div class="dropdown-menu btn btn-sm btn-info ml-4 col-md-11" style="border-radius: 20px;">
                                     <a class="dropdown-item mbr-white" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><h5>Logout</h5></a>
+                                                     document.getElementById('logout-form').submit();"><span class="mbri-logout display-5"></span><h5> Logout</h5></a>
                                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    <a href="{!! url('/orderlist') !!}" class="mbr-white"><span class="mbri-shopping-cart display-5"></span><h5> Orderlist</h5></a>
+                                </div>
                                 </li>
 
 
@@ -87,6 +101,22 @@
     </nav>
 </section>
 
+
+<div class="modal fade col-md-12" id="modalHelp">
+  <div class="modal-dialog modal-dialog-center modal-lg col-md-10">
+    <div class="modal-content">
+      <div class="modal-header">
+         &nbsp &nbsp
+        <h2 class="text-center" id="">User Guide and Help</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body" style="height: 700px;">
+        <embed src="{{ url('docs/usermanual.pdf') }}" type="application/pdf" width="100%" height="100%" />
+        
+    </div>
+    </div>
+  </div>
+</div>
 
 
 <div>
@@ -133,7 +163,7 @@
                                         रू 150,000.00
                                     </p>
                                     <!--Btn-->
-                                    <div class="mbr-section-btn col-md-12"><a href="{!! url('wcms/orderprocess') !!}" class="btn btn-secondary-outline m-0 display-4">
+                                    <div class="mbr-section-btn col-md-12"><a href="" class="btn btn-secondary-outline m-0 display-4">
                                             Order</a></div>
                                             </div>
                             <hr style="background-color: white;">
@@ -149,22 +179,53 @@
     </div>
 </div>
 </section>
+<br>
+    <div style="position: sticky;" class="align-right">
+            <input type="text" class="col-md-10 form-control align-center" name="search" style="border-radius: 40px; float: left;" placeholder="Search Products By Name Or Type" id="searchproducts">
+            <button type="submit" class="btn btn-secondary-outline pt-2" value="" style="border-radius: 40px; height: 55px;width: 220px;" id="btnsearch"><h2><span class="mbri-search"></span></h2></button>
+    </div>
 
-<section class="services1 cid-rg85aqlADV" id="services1-11">
+<script src="{{ asset('js/app.js') }}"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                                        $('#searchproducts').change(function(e){
+                                          e.preventDefault();
+                                          var textSearch = $('#searchproducts').val();
+                                          // var cat = $('#selectType').val();
+                                          $.ajax({
+                                              url: "{{ URL('/searchproducts') }}",
+                                              method: 'GET',
+                                              datatype : 'html',
+                                              data: {
+                                                 searchText : textSearch,
+                                                 // categories : cat
+                                              },
+                                              success: function(response){
+                                                console.log(response);
+                                                 $("#searchdata").html(response);
+                                               }     
+                                            });
+                                          // alert(textSearch);
+                                        });
+                                      });
+        </script>
+<section class="services1 cid-rg85aqlADV" id="services1-11" style="position: relative;">
     <!---->
     
     <!---->
     <!--Overlay-->
     
     <!--Container-->
-    <div class="container">
-        <div class="row justify-content-center">
-            <!--Titles-->
-            <div class="title pb-5 col-12">
+    <div class="align-left title pb-5 col-12" style="margin-left: 200px;">
                 
-                <h3 class="mbr-section-subtitle mbr-light mbr-fonts-style display-5">
-                    Products</h3>
+                <h1 class="">
+                    Products</h1>
             </div>
+    <div class="container" >
+        <div class="row justify-content-center"id="searchdata">
+            <!--Titles-->
+            
             <!--Card-1-->
             @if($item->count())
         @foreach($item as $items)
@@ -173,14 +234,14 @@
             <div class="card col-12 col-md-6 col-lg-3 mb-5">
                 <div class="card-wrapper">
                     <div class="card-img">
-                        <img src="/{{ $items->item_image }}" alt="" title="" style="width: 255px;height: 175px;">
+                        <img src="/{{ $items->item_image }}" alt="item_image" class="" title="" style="width: 210px;height: 270px;">
                     </div>
                     <div class="card-box" style="width: 210px;">
                         <h4 class="card-title mbr-fonts-style">{{ $items->item_name }}</h4>
                         
                         <!--Btn-->
                         <div class="mbr-section-btn align-left mb-1">
-                            <input type="submit" style="font-size: 20px; height: 75px; width: 150px;" class="btn btn-warning-outline display-7 p-0" value="रू {{ $items->price }}.00">
+                            <input type="submit" style="font-size: 20px; height: 75px; width: 150px;" class="btn btn-secondary-outline display-7 p-0" value="रू {{ $items->price }}.00">
                         </div>
                     </div>
                 </div>
@@ -207,24 +268,54 @@
     }
 </script>
 
-<section class="cid-rgiIjNRU8i" id="footer1-14">
+<section class="mbr-section info4 cid-rp4oTwPz44" data-bg-video="http://www.youtube.com/watch?v=uNCr7NdOJgw" id="info4-1a">
+
+    
+
+    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(35, 35, 35);">
+    </div>
     <div class="container">
-        <div class="media-container-row content align-center">
-            <div class="col-12 col-md-3">
+        <div class="justify-content-center row">
+            <div class="media-container-column title col-12 col-md-10">
+                <h2 class="align-right mbr-bold mbr-white pb-3 mbr-fonts-style display-2">
+                    BACKGROUND VIDEO
+                </h2>
+                <h3 class="mbr-section-subtitle align-right mbr-light mbr-white pb-3 mbr-fonts-style display-5">
+                    Shape your future web project with sharp design and refine coded functions
+                </h3>
+                <p class="mbr-text align-right mbr-white mbr-fonts-style display-7">
+                    Make your own website in a few clicks! Mobirise helps you cut down development time by providing you with a flexible website editor with a drag and drop interface. MobiRise Website Builder creates responsive, retina and mobile friendly websites in a few clicks. Mobirise is one of the easiest website development tools available today.
+                </p>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="cid-rgiETv0yeQ" id="footer1-z">
+
+    
+
+    
+
+    <div class="container">
+        <div class="media-container-row content text-white">
+            <div class="col-12 col-md-3 mbr-black align-center">
                 <div class="media-wrap">
-                    <a href="index.html">
-                        <img src="{{ url::to('assets/images/shiva-162x193.png') }}" alt="Mobirise" title="">
+                    <a href="{!! url('wcms/index2') !!}">
+                        <img src="{{ url('assets/images/shiva-162x193.png') }}" alt="Mobirise" title="">
                     </a>
                 </div>
-                <h2><b>Woodsite</b></h2>
+                <h2>WOODSITE</h2>
             </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+            <div class="col-12 col-md-4 mbr-fonts-style display-7">
                 <h5 class="pb-3">
                     Address
                 </h5>
                 <p class="mbr-text"></p><p>Mahakvimarga, Kathmandu Dillibazar</p><p></p>
             </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+            <div class="col-12 col-md-4 mbr-fonts-style display-7">
                 <h5 class="pb-3">
                     Contacts
                 </h5>
@@ -235,8 +326,16 @@
             </div>
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
                 <h5 class="pb-3">
-                    Contents</h5>
-                <p class="mbr-text"><a href="index.html" class="text-warning">Home</a><br><a href="page2.html" class="text-warning">Order</a><br><a href="page1.html" class="text-warning">Forum</a><br><a href="page5.html" class="text-warning">About Us</a><br><a href="page4.html" class="text-warning">Settings</a></p>
+                    Menu</h5>
+                <p class="mbr-text">
+                  <a href="{!! url('wcms') !!}" class="text-warning">Home</a><br>
+                  <a href="{!! url('wcms/order2') !!}" class="text-warning">Order</a><br>
+                  <a href="{!! url('/post') !!}" class="text-warning">Forum</a><br>
+                  <a href="{!! url('wcms/aboutus') !!}" class="text-warning">About Us</a><br>
+                  <a href="{!! url('wcms/settings') !!}" class="text-warning">Settings</a><br>
+                  <a href="{!! url('/orderlist') !!}" class="text-warning">Orderlist</a><br>
+                  <a href="" data-target="#modalHelp" data-toggle="modal" class="text-warning">Help</a><br>
+                </p>
             </div>
         </div>
         <div class="footer-lower">
@@ -292,7 +391,15 @@
   <script src=" {{ url('assets/touchswipe/jquery.touch-swipe.min.js') }}"></script>
   <script src=" {{ url('assets/theme/js/script.js') }}"></script>
   <script src=" {{ url('assets/parallax/jarallax.min.js') }}"></script>
-  
-  
+  <script src=" {{ url('assets/masonry/masonry.pkgd.min.js') }}"></script>
+  <script src=" {{ url('assets/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+  <script src=" {{ url('assets/bootstrapcarouselswipe/bootstrap-carousel-swipe.js') }}"></script>
+  <script src=" {{ url('assets/viewportchecker/jquery.viewportchecker.js') }}"></script>
+  <script src=" {{ url('assets/vimeoplayer/jquery.mb.vimeo_player.js') }}"></script>
+  <script src=" {{ url('assets/slidervideo/script.js') }}"></script>
+  <script src=" {{ url('assets/gallery/player.min.js') }}"></script>
+  <script src=" {{ url('assets/gallery/script.js') }}"></script>  
+  <script src=" {{ url('assets/ytplayer/jquery.mb.ytplayer.min.js') }}"></script>
+  <script src=" {{ url('assets/formoid/formoid.min.js') }}"></script>
 </body>
 </html>

@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="{{ url('assets/theme/css/style.css') }}" type="text/css">
   <link rel="stylesheet" href="{{ url('assets/mobirise/css/mbr-additional.css') }}" type="text/css">
   <link rel="stylesheet" href="{{ url('assets/animate.css/animate.min.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ url('font-awesome/css/font-awesome.min.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ url('font-awesome/css/font-awesome.css') }}" type="text/css">
 
   <style type="text/css">
     .input-details1 .input-details
@@ -30,7 +32,8 @@
 </head>
 <body>
 
-<section class="menu cid-rg6hCT4CBx" once="menu" id="menu2-b">
+    
+  <section class="menu cid-rg6hCT4CBx" once="menu" id="menu2-b">
 
     
 
@@ -51,38 +54,47 @@
                     </a>
                 </span>
                 <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-5" href="{!! url('wcms/index2') !!}">
-                        WCMS</a></span>
+                        Woodsite</a></span>
             </div>
         </div>
         <div class="collapse navbar-collapse align-right" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
               <li class="nav-item">
-                <a class="nav-link link text-black display-5" style="color: #55b4d4;" href="{!! url('wcms/index2') !!}"><span style="color:#82786e;">Home</span></a>
+                <a class="nav-link link text-black display-5" style="color: #55b4d4;" href="{!! url('wcms/index2') !!}">Home</a>
               </li>
               <li class="nav-item">
-                <a href="{!! url('/order2') !!}" class="nav-link link text-black display-5" >Order</a>
+                <a title="Buy Products" href="{!! url('/order2') !!}" class="nav-link link text-black display-5" style="">Order</a>
               </li>
-              <li class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('/post') !!}">Forum</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}">About US</a>
+              <li title="Our Community" class="nav-item"><a class="nav-link link text-black display-5" href="{!! url('/post') !!}">Forum</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
+                <a title="Learn more about us" class="nav-link link text-black display-5" href="{!! url('wcms/aboutus') !!}">About US</a>
+              </li>
+              <li class="nav-item">
+                <a title="Settings" class="nav-link link text-black display-5" href="{!! url('wcms/settings') !!}">
                   <span class="mbri-setting3 mbr-iconfont mbr-iconfont-btn"></span>
                 </a>
+              </li>              
+              <li class="nav-item">
+                <a title="Help" class="nav-link link text-black display-5" href="" data-target="#modalHelp" data-toggle="modal">
+                  <span class="mbri-info mbr-iconfont mbr-iconfont-btn"></span>
+                </a>
+              </li>
+              <li class="nav-item">
               </li>
 
 <li class="nav-item dropdown">
 
                                 <a class="nav-link link dropdown-toggle btn btn-sm btn-info mbr-white col-md-12" style="border-radius: 45px;" data-toggle="dropdown-submenu" href="#"><h5>{{Auth::user()->fullname}}</h5><span class="caret"></span></a>
                              
-                                <div class="dropdown-menu btn btn-sm btn-info ml-4 col-md-10" style="border-radius: 20px;">
+                                <div class="dropdown-menu btn btn-sm btn-info ml-4 col-md-11" style="border-radius: 20px;">
                                     <a class="dropdown-item mbr-white" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><h5>Logout</h5></a>
+                                                     document.getElementById('logout-form').submit();"><span class="mbri-logout display-5"></span><h5> Logout</h5></a>
                                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    <a href="{!! url('/orderlist') !!}" class="mbr-white"><span class="mbri-shopping-cart display-5"></span><h5> Orderlist</h5></a>
+                                </div>
                                 </li>
 
 
@@ -96,110 +108,159 @@
 </section>
 
 
+<div class="modal fade col-md-12" id="modalHelp">
+  <div class="modal-dialog modal-dialog-center modal-lg col-md-10">
+    <div class="modal-content">
+      <div class="modal-header">
+         &nbsp &nbsp
+        <h2 class="text-center" id="">User Guide and Help</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body" style="height: 700px;">
+        <embed src="{{ url('docs/usermanual.pdf') }}" type="application/pdf" width="100%" height="100%" />
+        
+    </div>
+    </div>
+  </div>
+</div>
 
 
+
+          
 <section>
   <br><br>
   <br><br>
   <br>
         <div class="container">
           <div class="row">
+            <div id="breadcrumb">
+            <ul class="breadcrumb">
+  <li><a href="{!! url('/order2') !!}">Order / &nbsp;</a></li>
+  <li>Ordered {{$getBill->item_name}} / &nbsp;</li>
+  <li>Invoice - {{$getBill->item_name}}</li>
+</ul>
+          </div>
             <div class="col-lg-10 col-centered public-view">              
               <div class="container">
                 <div class="" style="background-color:#333"></div>
 
-                <div class="invoice-detail-body" style="background-image: url('{{ url::to('assets/images/shiva-translucent.png') }}');background-repeat: no-repeat;background-size: cover;;z-index: -1;">
+                    <div class="align-center col-md-12" id="info1"><h3>Your invoice is ready.</h3></div>
+
+                <div class="invoice-detail-body" id="printthisdiv" style="background-image: url('{{ url::to('assets/images/shiva-translucent.png') }}');background-repeat: no-repeat;background-size: cover;;z-index: -1;">
                   <div class="invoice-detail-title content-block">
                     <div class="d-flex justify-content-between">
                       <div class="invoice-title">
-                        <h3>Bill</h3>
+
+                        <h3>Order Invoice</h3>
                       </div>
                       <div class="invoice-logo"><div class="photo-drop">
                         <div class="photo-drop-preview">                          
-                        <div>Bill No.: </div>
-                        <div>Date: </div>
+                        <div>Bill No.: {{$getBill->orderid}}</div>
+                        <div>Date: <?php echo date('Y-m-d')?></div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <hr class="divider lite margin">
-                <div class="col-md-10" style="float: left;">
+                <div class="col-md-6" style="float: left;">
                   <div class="row">
                     <div class="col-md invoice-address invoice-address-company">
                       <h4>Personal Details</h4>
                       <div class="col-md-12 input-details1">
                         <div class=""><label style="width:100px;">Name: </label><span>{{Auth::user()->fullname}}</span></div>
-                        <div class=""><label style="width:100px;">Email: </label><span>dangolgrozen123@gmail.com</span></div>
-                        <div class=""><label style="width:100px;">Contact: </label><span>9860058411</span></div>
-                        <div class=""><label style="width:100px;">Zip Code: </label><span>44600</span></div>
-                        <div class=""><label style="width:100px;">Address: </label><span>Khokan, lalitpur</span></div>
+                        <div class=""><label style="width:100px;">Email: </label><span>{{Auth::user()->email}}</span></div>
+                        <div class=""><label style="width:100px;">Contact: </label><span>{{Auth::user()->contact}}</span></div>
+                        <!-- <div class=""><label style="width:100px;">Zip Code: </label><span>44600</span></div> -->
+                        <div class=""><label style="width:100px;">Address: </label><span>{{Auth::user()->address}}</span></div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="align-right">
-                  <img style="width: 15%;height:15%;" src="{{ url('assets/images/shiva-162x193.png') }}" alt="company-logo" title=""/>
+                <div class="align-right mb-3">
+                  <img style="width: 10%;height:10%;" src="{{ url('assets/images/shiva-162x193.png') }}" alt="company-logo" title=""/>
                   <div class="col-md-12 align-right">
-                  <h3><b>WCMS</b></h3>
+                  <h3><b>Woodsite</b></h3>
                 </div>
+                <div>traditionalwoodcraftstore@gmail.com <span class="fa fa-envelope"></span></div>
+                <div>+977-9860058411 <i class="fa fa-phone"></i></div>
+                <div>+1 (0) 000 0000 002 <i class="fa fa-fax"></i></div>
+                <div>Mahakvimarga, Kathmandu Dillibazar <i class="fas fa-map-marker-alt"></i></div>
                 </div>
                       <div class="invoice-item-list content-block">
                         <table class="table invoice-table invoice-table-view">
                           <thead class="thead">
                             <tr>
-                              <th class="invoice-detail-summary" style="background-color:#333!important;color:#fff">
-                              Description</th>
+                              <th class="invoice-detail-name" style="background-color:#333!important;color:#fff">
+                              Item Name</th>
+                              <th class="invoice-detail-summary align-left" style="background-color:#333!important;color:#fff">
+                          Details
+                        </th>
                               <th class="invoice-detail-rate" style="background-color:#333!important;color:#fff">
                               Price
                             </th>
                             <th class="invoice-detail-quantity" style="background-color:#333!important;color:#fff">
-                            Qty
+                            Quantity
                           </th>
                           <th class="invoice-detail-total align-right" style="background-color:#333!important;color:#fff">
                           Amount
                         </th>
+
                       </tr>
                     </thead>
                     <tbody class="invoice-items">
                       <tr class="item-row item-row-1">
                         <td class="item-row-summary" data-label="Item #1"><span class="item-row-name"></span>
                           <span class="item-row-description">
-                            Item Name
-                            <span>
-                            <br>
-                            Description
-                          </span>
+                            {{$getBill->item_name}}
                         </span>
                       </td>
-                      <td class="item-row-rate" data-label="Price">
+                      <td class="item-row-summary" data-label="Item #1"><span class="item-row-name"></span>
+                          <span class="item-row-description">
+                            {{$getBill->item_description}}
+                        </span>
+                      </td>
+                      <td class="item-row-rate" data-label="Price" id="price">
                         <span class="currency"><span class="localized-number">{{$getBill->price}}</span></span>
                       </td>
-                      <td class="item-row-quantity" data-label="Quantity">
+                      <td class="item-row-quantity" data-label="Quantity" id="qty">
                         <span class="localized-number">{{$getBill->quantity}}</span>
                       </td>
-                      <td class="item-row-amount align-right" data-label="Amount">
+                      <td class="item-row-amount align-right" data-label="Amount" id="amt">
                         <span class="localized-number">1000.00</span>
                       </td>
                     </tr>
                   </tbody>
                 </table>
+                <script src="{{asset('js/app.js')}}"></script>
+                <script type="text/javascript">
+                  $(document).ready(function(){
+                    var p = $('#price').text();
+                    var q = $('#qty').text();
+                    $('#amt').text(p*q);
+                    $('#subTot').text(p*q);
+                    $('#vat').text((p*q)/100*13);
+                    $('.gTot').text((p*q)+((p*q)/100*13));
+
+                  });
+                </script>
               </div>
               <hr class="divider margin" style="background-color:#333">
 
               <div class="align-right">
                 <div class="invoice-totals-row desktop undefined">
-                  <div class="invoice-summary-label">Subtotal: <label style="width:100px;">1000.00</label></div>
+                  <div class="invoice-summary-label">Subtotal: <label style="width:100px;" id="subTot"></label></div>
                 </div>
                 <div class="invoice-totals-row desktop undefined">
-                  <div class="invoice-summary-label">Tax (13%): <label style="width:100px;">130.00</label></div>
+                  <div class="invoice-summary-label">Tax (13%): <label style="width:100px;" id="vat"></label></div>
                 </div>
                 <div class="invoice-totals-row desktop undefined">
-                  <div class="invoice-summary-label">Total: <label style="width:100px;">1130.00</label></div>
+                  <div class="invoice-summary-label"><b>Total: <label style="width:100px;" class="gTot"></label></b></div>
                 </div>
                   <div class="col-md-6" style="float: left;">Thankyou for using our service.</div>
-                  <div class="col-md-6 align-right" style="float: right;"><b>Balance Due: <label style="width:100px;">1130.00</label></b></div>              </div>
-              <br>
+                  <div class="col-md-6 align-right" style="float: right;"></div>
+                                </div>
+              <br><br>
 <div>
   Terms and conditons:
   <div class="col-md-10">
@@ -212,10 +273,9 @@
 </div>
             </div>
     <div class="align-right">
-                <button class="btn btn-secondary" title="Download a PDF copy of the bill">
-                  <span class="mbri-file display-4"><div style="font-size: 10px;">PDF</div></span>
-                </button>
-                <button class="btn btn-primary" title="Print the bill">
+      <a class="btn btn-secondary" id="btnOrderlist" href="{{ ('/orderlist') }}" title="List of Your Prevoius Orders"><div style="">Order History</div>
+                </a>
+                <button id="btnPrint" class="btn btn-primary" title="Print the bill" value="Print" onClick="printReport()">
                   <span class="mbri-print display-4"><div style="font-size: 10px;">Print</div></span>
                 </button>
               </div>
@@ -228,26 +288,50 @@
     </div>
 </section>
 
+<script src="{{ URL::to('asset/js/app.js') }}"></script>
+<script type="text/javascript">
+    function printReport()
+    {
+      document.getElementById('menu2-b').style.visibility = 'hidden';
+      document.getElementById('footer1-z').style.visibility = 'hidden';
+      document.getElementById('btnOrderlist').style.visibility = 'hidden';
+      document.getElementById('btnPrint').style.visibility = 'hidden';
+      document.getElementById('breadcrumb').style.visibility = 'hidden';
+      document.getElementById('info1').style.visibility = 'hidden';
+
+        var prtContent = document.getElementById("billBody");
+        window.print(prtContent);
+        document.getElementById('menu2-b').style.visibility = 'visible';
+      document.getElementById('footer1-z').style.visibility = 'visible';
+      document.getElementById('btnOrderlist').style.visibility = 'visible';
+      document.getElementById('btnPrint').style.visibility = 'visible';
+    }
+</script>
     
 
-   <section class="cid-rgiETv0yeQ" id="footer1-z">
+ <section class="cid-rgiETv0yeQ" id="footer1-z">
+
+    
+
+    
 
     <div class="container">
         <div class="media-container-row content text-white">
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 mbr-black align-center">
                 <div class="media-wrap">
                     <a href="{!! url('wcms/index2') !!}">
                         <img src="{{ url('assets/images/shiva-162x193.png') }}" alt="Mobirise" title="">
                     </a>
                 </div>
+                <h2>WOODSITE</h2>
             </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+            <div class="col-12 col-md-4 mbr-fonts-style display-7">
                 <h5 class="pb-3">
                     Address
                 </h5>
                 <p class="mbr-text"></p><p>Mahakvimarga, Kathmandu Dillibazar</p><p></p>
             </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+            <div class="col-12 col-md-4 mbr-fonts-style display-7">
                 <h5 class="pb-3">
                     Contacts
                 </h5>
@@ -258,8 +342,16 @@
             </div>
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
                 <h5 class="pb-3">
-                    Contents</h5>
-                <p class="mbr-text"><a href="index.html" class="text-warning">Home</a><br><a href="page2.html" class="text-warning">Order</a><br><a href="page1.html" class="text-warning">Forum</a><br><a href="page5.html" class="text-warning">About Us</a><br><a href="page4.html" class="text-warning">Settings</a></p>
+                    Menu</h5>
+                <p class="mbr-text">
+                  <a href="{!! url('wcms') !!}" class="text-warning">Home</a><br>
+                  <a href="{!! url('/order2') !!}" class="text-warning">Order</a><br>
+                  <a href="{!! url('/post') !!}" class="text-warning">Forum</a><br>
+                  <a href="{!! url('wcms/aboutus') !!}" class="text-warning">About Us</a><br>
+                  <a href="{!! url('wcms/settings') !!}" class="text-warning">Settings</a><br>
+                  <a href="{!! url('/orderlist') !!}" class="text-warning">Orderlist</a><br>
+                  <a href="" data-target="#modalHelp" data-toggle="modal" class="text-warning">Help</a><br>
+                </p>
             </div>
         </div>
         <div class="footer-lower">

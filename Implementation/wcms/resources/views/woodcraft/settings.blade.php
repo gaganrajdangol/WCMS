@@ -44,19 +44,19 @@
         <div class="menu-logo">
             <div class="navbar-brand">
                 <span class="navbar-logo">
-                    <a href="index.html">
+                    <a href="{!! url('wcms/index2') !!}">
                         <img src=" {{ URL::to('assets/images/shiva2-122x145.png') }}" alt="wcms" title="" style="height: 5.1rem;">
                     </a>
                 </span>
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-5" href="index.html">
-                        WCMS</a></span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-5" href="{{ ('/wcms/index2') }}">
+                        Woodsite</a></span>
             </div>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
                 <li class="nav-item">
-                  <a class="nav-link link text-black display-4" href="javascript:history.back()" style="font: calibri;">
-                    <b><span class="mbri-left"><b> Back</b></span></b>
+                  <a class="nav-link link text-black display-5" href="javascript:history.back()" style="">
+                    <b><span class="mbri-left"></span><b> Back</b></b>
                 </a>
             </li>
         
@@ -71,6 +71,12 @@
 
     <div class="container">
         <div class="media-container-row">
+          <div class="">
+            <ul class="breadcrumb">
+  <li><a href="{!! url('/order2') !!}">Settings / &nbsp;</a></li>
+  <li> Update Profile</li>
+</ul>
+          </div>
             <div class="title col-12 col-md-8">
                 <h2 class="align-center pb-3 mbr-fonts-style display-2">
                     Settings</h2>
@@ -104,7 +110,7 @@
 <div style="background-color: rgb(255, 255, 255);">
 
 
-  <form method="post" class="form-horizontal" action="{!!url('/updateprofile', Auth::user()->id)!!}" enctype="multipart/form-data">
+  <form method="post" class="form-horizontal" action="{!!url('/updateprofile', Auth::user()->userid)!!}" enctype="multipart/form-data">
 
           @csrf
           {!!method_field('put')!!}
@@ -145,7 +151,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="emaile">Email</label>  
   <div class="col-md-4">
-  <input id="emaile" name="emaile" type="text" placeholder="Email" class="form-control input-md" value="{!!(Auth::user()->email)!!}">
+  <input id="emaile" name="email" type="text" placeholder="Email" class="form-control input-md" value="{!!(Auth::user()->email)!!}">
     
   </div>
 </div>
@@ -189,7 +195,7 @@
 
 </section>
 
-<section class="cid-rgiIbdKXDX" id="footer1-12">
+<section class="cid-rgiETv0yeQ" id="footer1-z">
 
     
 
@@ -197,20 +203,21 @@
 
     <div class="container">
         <div class="media-container-row content text-white">
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 mbr-black align-center">
                 <div class="media-wrap">
-                    <a href="index.html">
-                        <img src="{{ URL::to('assets/images/shiva-162x193.png') }}" alt="" title="">
+                    <a href="{!! url('wcms/index2') !!}">
+                        <img src="{{ url('assets/images/shiva-162x193.png') }}" alt="Mobirise" title="">
                     </a>
                 </div>
+                <h2>WOODSITE</h2>
             </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+            <div class="col-12 col-md-4 mbr-fonts-style display-7">
                 <h5 class="pb-3">
                     Address
                 </h5>
                 <p class="mbr-text"></p><p>Mahakvimarga, Kathmandu Dillibazar</p><p></p>
             </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+            <div class="col-12 col-md-4 mbr-fonts-style display-7">
                 <h5 class="pb-3">
                     Contacts
                 </h5>
@@ -221,8 +228,16 @@
             </div>
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
                 <h5 class="pb-3">
-                    Contents</h5>
-                <p class="mbr-text"><a href="index.html" class="text-warning">Home</a><br><a href="page2.html" class="text-warning">Order</a><br><a href="page1.html" class="text-warning">Forum</a><br><a href="page5.html" class="text-warning">About Us</a><br><a href="page4.html" class="text-warning">Settings</a></p>
+                    Menu</h5>
+                <p class="mbr-text">
+                  <a href="{!! url('wcms') !!}" class="text-warning">Home</a><br>
+                  <a href="{!! url('/order2') !!}" class="text-warning">Order</a><br>
+                  <a href="{!! url('/post') !!}" class="text-warning">Forum</a><br>
+                  <a href="{!! url('wcms/aboutus') !!}" class="text-warning">About Us</a><br>
+                  <a href="{!! url('wcms/settings') !!}" class="text-warning">Settings</a><br>
+                  <a href="{!! url('/orderlist') !!}" class="text-warning">Orderlist</a><br>
+                  <a href="" data-target="#modalHelp" data-toggle="modal" class="text-warning">Help</a><br>
+                </p>
             </div>
         </div>
         <div class="footer-lower">
@@ -267,6 +282,7 @@
         </div>
     </div>
 </section>
+
 
 
   <script src=" {{ url('assets/web/assets/jquery/jquery.min.js') }}"></script>
